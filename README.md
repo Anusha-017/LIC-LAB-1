@@ -21,7 +21,7 @@ therefore RD=5K ohms
 
  4)VGS​=VG​−VS​=0.9−0=0.9V
   
-  ID​=​K′W/L​(Vov​)^2
+  ID​=​K′*W/L​(Vov​)^2
 
   W=1.07×10−6m
 ## Circuit 1: CS Amplifier with Resistor Load:
