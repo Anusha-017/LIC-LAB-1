@@ -124,13 +124,19 @@ Ac gain can be calulated using equation Av = -gm *Rd
   
   ## AC Analysis(with capacitor):
 
+
+<img width="466" height="445" alt="Screenshot 2026-02-22 232608" src="https://github.com/user-attachments/assets/fed3440a-27db-4fff-bf6c-83d990d763ef" />
+
+
+Output Graph:
+
  <img width="1912" height="416" alt="Screenshot 2026-02-22 233258" src="https://github.com/user-attachments/assets/f9cef3cf-13cb-4645-aad1-214cbe5786af" />
  
  * **C=1.5pF**
    
  *  Av=9.4-3=6.4dB
    
- *  Bnadwidth=24.27MHz
+ *  Bandwidth=24.27MHz
 
    ### Inference: 
 
