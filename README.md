@@ -132,7 +132,9 @@ Ac gain can be calulated using equation Av = -gm *Rd
 1.DC Analysis- Determines the quiescent operating point(Q point) and ensures the NMOS operates in the saturation region for proper amplification.  
 
 
-2.AC Analysis- Examines the small-signal gain of the amplifier. The NMOS active load increases output impedance, leading to improved voltage gain.  
+2.AC Analysis- it is observed that the load capacitance introduces a dominant pole at the output, limiting the high-frequency response of the amplifier.
+
+Hence, the CS amplifier design meets the required specifications and demonstrates proper biasing, gain performance, and bandwidth characteristics
 
 
 3.Transient Analysis-Validates the amplifier’s response to a time-varying signal. Confirms signal amplification and phase inversion, which is a characteristic of a common source amplifier.  
