@@ -93,7 +93,12 @@ Common-Source NMOS Amplifier: DC Voltage Transfer Characteristic (VTC):
 * **Circuit behavior:** As $V_{in}$ continues to increase, $V_{out}$ drops so low that the transistor leaves saturation and enters the triode region. Here, the MOSFET acts like a voltage-controlled resistor. The curve flattens out because the transistor's "on-resistance" is very low, pulling $V_{out}$ close to ground (**0V**), but it doesn't reach a perfect zero due to that small residual resistance.
 ## Transient Analysis:
 <img width="1919" height="870" alt="Screenshot 2026-02-23 002154" src="https://github.com/user-attachments/assets/4d4f8c1e-9ece-4abc-b77f-601823d1241c" />
-From the graph we can calculate the gain of the circuit.
+
+* **Graph Interpretation**:
+* Amplification (Voltage Gain):The voltage gain ($A_v$) is the ratio of output AC amplitude to input AC amplitude.
+* Phase Shift (Signal Inversion):This represents a 180-degree phase shift. This happens because as the input gate voltage increases, the transistor turns "on" , drawing more drain current. This increased current causes a larger voltage drop across the 5kΩ drain resistor (R1), which in turn lowers the voltage at the drain node (Vout).
+  
+* From the graph we can calculate the gain of the circuit.
 
 * **Av​**=ΔVin/​ΔVout
   
