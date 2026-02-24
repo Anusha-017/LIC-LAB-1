@@ -3,7 +3,7 @@
 ## Aim:
 Design cs ampifier using nmosfet in tsmc 180nm using vdd=2V , P<=1.5mW,capacitor = 1.5pF
 ## Theory:
-A Common-Source (CS) amplifier is a popular transistor amplifier configuration where the input is applied to the gate and the output is taken from the drain, with the source serving as the common terminal. It provides voltage amplification by modulating the drain current in response to changes in the gate-source voltage. The output is 180° out of phase with the input, and the amplifier has high input and output impedance.For a Common-Source (CS) amplifier to work correctly, the conditions are ,V GS≥V th(to turn the transistor on),V DS>V GS −V th(to keep the transistor in saturation),The input signal vin should be small for small-signal operation,Proper biasing and selection of 𝑅Dare needed for stable operation and adequate voltage gain.
+A Common-Source (CS) amplifier is a popular transistor amplifier configuration where the input is applied to the gate and the output is taken from the drain, with the source serving as the common terminal. It provides voltage amplification by modulating the drain current in response to changes in the gate-source voltage. The output is 180° out of phase with the input, and the amplifier has high input and output impedance.For a Common-Source (CS) amplifier to work correctly, the conditions are ,VGS≥Vth(to turn the transistor on),VDS>VGS −Vth(to keep the transistor in saturation),The input signal vin should be small for small-signal operation,Proper biasing and selection of 𝑅Dare needed for stable operation and adequate voltage gain.
 
 In saturation region the current formula is given by ID=1/2knVov
 ## Procedure :
@@ -21,7 +21,7 @@ DC Analysis:  .op to find DC operating point.
 AC Analysis: .ac dec 10 0.1 100G to analyze gain and frequency response.
 Transient Analysis: .tran 5m to observe the output waveform over time. Place these commands in the schematic.
 
-Step 5: Run Simulation Click Run (green 'Play' button).View results in waveform viewer. Observing DC bias values, gain vs frequency response, and time-domain output waveform.
+Step 5: Run Simulation Click Run.View results in waveform viewer. Observing DC bias values, gain vs frequency response, and time-domain output waveform.
 
 Step 6: Interpret The results for DC analysis, check VGS, VDS, and ID to confirm the MOSFET is operating. For AC analysis, check the gain plot and bandwidth.Respectively for transient analysis, observe the shape of the output waveform and check that amplification took place.
 ## Calculation:
@@ -39,7 +39,7 @@ therefore RD=5K ohms
 
  4)VGS​=VG​−VS​=0.9−0=0.9V
   
-  ID​=​K′*W/L​(Vov​)^2
+  ID​=​Kn′*W/L​(Vov​)^2
 
   W=1.07×10−6m
 ## Circuit 1: CS Amplifier with Resistor Load:
@@ -102,12 +102,12 @@ Common-Source NMOS Amplifier: DC Voltage Transfer Characteristic (VTC):
 
 * **Av​**=ΔVin/​ΔVout
   
-   Av=0.057/0.0186=3.06
+   Av=0.057/0.0186=3.06v/v
 * **Gain(dB)** = 20log10(Av)=9.714dB​​​
 * **gm= 2Id / Vov=7.49×10^−4 S**
 * **Av=gm×RD**
 
-   Av=7.49×10^−4×5×10^3=3.74
+   Av=7.49×10^−4×5×10^3=3.74v/v
 * **Gain(dB)** = 20log10(Av)=11.36
 * ## AC Analysis(without capacitor):
   
