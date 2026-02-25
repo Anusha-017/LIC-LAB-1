@@ -71,7 +71,8 @@ It is in saturation region.The Q point is 1V,200µA
 Transfer characteristics depict how the drain current (Id) varies with the gate-to-source voltage (Vgs).It's ltspice command is ".dc V2 0 2"
 Common-Source NMOS Amplifier: DC Voltage Transfer Characteristic (VTC):
 
-<img width="1919" height="435" alt="Screenshot 2026-02-23 000216" src="https://github.com/user-attachments/assets/98bba263-ed62-4b2e-99ab-3ba6719c5cc8" />
+<img width="1915" height="917" alt="image" src="https://github.com/user-attachments/assets/8b296010-8943-47a1-9efc-c42a8191c807" />
+
 
 
 ## 1. Cutoff Region ($V_{in} < V_{th}$)
@@ -131,9 +132,9 @@ Ac gain can be calulated using equation Av = -gm *Rd
   
 * **Av=9.4-3=6.4dB**
  
-* Cutoff frequency=42.33GHz
+* Cutoff frequency=42.51GHz
   
-* Bandwidth=42.33GHz
+* Bandwidth=42.51GHz
   
   ## AC Analysis(with capacitor):
 
@@ -146,8 +147,9 @@ Output Graph:
  * **C=1.5pF**
    
  *  Av=9.4-3=6.4dB
+ *   Cutoff frequency=24.14MHz
    
- *  Bandwidth=24.27MHz
+ *  Bandwidth=24.14MHz
    
 
    ### Inference: 
