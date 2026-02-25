@@ -160,12 +160,13 @@ Output Graph:
 * Established Q-Point: The concluding quiescent operating point (Q-point) for this amplifier stage is finalized at $V_{DS} =$ 1V and $I_D =$ 200µA. This sets the stable DC baseline upon which the transient AC signals will ride.
 
 
-2.Transient Analysis-
+2.Transient Analysis:
 
-*Signal Amplification (Voltage Gain)The transient analysis confirms that the circuit is actively amplifying the small AC input signal.By evaluating the peak-to-peak voltages using the plot cursors, the input swing ($\Delta V_{in}$) is approximately $19.13\text{ mV}$ and the amplified output swing ($\Delta V_{out}$) is approximately $56.7\text{ mV}$.This yields a simulated practical voltage gain of $A_v = \frac{\Delta V_{out}}{\Delta V_{in}} \approx 2.96\text{ V/V}$
+* Signal Amplification (Voltage Gain)The transient analysis confirms that the circuit is actively amplifying the small AC input signal.By evaluating the peak-to-peak voltages using the plot cursors, the input swing ($\Delta V_{in}$) is approximately $19.13\text{ mV}$ and the amplified output swing ($\Delta V_{out}$) is approximately $56.7\text{ mV}$.This yields a simulated practical voltage gain of $A_v = \frac{\Delta V_{out}}{\Delta V_{in}} \approx 2.96\text{ V/V}$
 
-*Phase Inversion (180° Phase Shift)The combined graph displaying both $V_{in}$ (blue) and $V_{out}$ (green) clearly illustrates signal inversion.When the input signal rises to its positive peak, the output signal falls to its lowest trough.
-*Theoretical and Simulated values of gain  difference is likely due to the simulation factoring in the transistor's internal output resistance ($r_o$) due to channel length modulation, which sits in parallel with $R_D$ and lowers the overall gain.
+* Phase Inversion (180° Phase Shift)The combined graph displaying both $V_{in}$ (blue) and $V_{out}$ (green) clearly illustrates signal inversion.When the input signal rises to its positive peak, the output signal falls to its lowest trough.
+  
+* Theoretical and Simulated values of gain  difference is likely due to the simulation factoring in the transistor's internal output resistance ($r_o$) due to channel length modulation, which sits in parallel with $R_D$ and lowers the overall gain.
 
 3.AC Analysis-
 
