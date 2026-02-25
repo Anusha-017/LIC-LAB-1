@@ -114,9 +114,9 @@ Input and output waveform:
 
 * **Av​**=ΔVin/​ΔVout
   
-   Av=56.7×10^-3/19.13×10^-3=3.06v/v
-* **Gain(dB)** = 20log10(Av)=9.71dB​​​
-* We know that **gm= 2Id / Vov=7.49×10^−4 S**
+   Av=56.7×10^-3/19.13×10^-3=2.96v/v
+* **Gain(dB)** = 20log10(Av)=9.42dB​​​
+* Theoretical formula for gm is: **gm= 2Id / Vov=7.49×10^−4 S**
 * **Av=gm×RD**
 
    Av=7.49×10^−4×5×10^3=3.74v/v
@@ -126,7 +126,8 @@ Input and output waveform:
 AC analysis depicts how the amplifier's gain (𝐴𝑣) changes with frequency as it is a critical way of studying the frequency response of the amplifier.We can also find the bandwidth.the MOSFET behavior will have to be linearized around its bias point. AC analysis is done in LTspice using the .ac dec 10 0.1 100G command
 Ac gain can be calulated using equation Av = -gm *Rd
 
-  <img width="1918" height="423" alt="image" src="https://github.com/user-attachments/assets/ad31a155-1f2c-4934-a000-fd3221276fd3" />
+<img width="1918" height="922" alt="image" src="https://github.com/user-attachments/assets/22cae5f3-aecb-4a3e-9450-f3f9cd23bbcf" />
+
   
 * **Av=9.4-3=6.4dB**
  
@@ -136,14 +137,12 @@ Ac gain can be calulated using equation Av = -gm *Rd
   
   ## AC Analysis(with capacitor):
 
-
-<img width="466" height="445" alt="Screenshot 2026-02-22 232608" src="https://github.com/user-attachments/assets/fed3440a-27db-4fff-bf6c-83d990d763ef" />
-
-
 Output Graph:
 
- <img width="1912" height="416" alt="Screenshot 2026-02-22 233258" src="https://github.com/user-attachments/assets/f9cef3cf-13cb-4645-aad1-214cbe5786af" />
- 
+
+<img width="1918" height="901" alt="image" src="https://github.com/user-attachments/assets/18a034b9-232f-4ea7-abde-245743629ce6" />
+
+
  * **C=1.5pF**
    
  *  Av=9.4-3=6.4dB
@@ -153,24 +152,28 @@ Output Graph:
 
    ### Inference: 
 
-1.DC Analysis- Determines the quiescent operating point(Q point) and ensures the NMOS operates in the saturation region for proper amplification.  
+1.DC Analysis-
+* DC AnalysisParameter Tuning for Target Bias: The initial LTspice operating point simulation did not yield the desired drain current ($I_D$).The data table illustrates the direct proportionality between the transistor's channel width and its drain current
+* Confirmation of Amplifier operating point : The final calculation verifies that the tuned MOSFET is operating in the saturation region. Because the drain-source voltage ($V_{DS}$) is 1V, and it satisfies the amplifier condition VDS>=VGS-VTH ; $V_{DS} > V_{OV}$ (where $V_{OV}$ is the overdrive voltage), the transistor is correctly biased to amplify AC signals without immediate clipping.
+* Established Q-Point: The concluding quiescent operating point (Q-point) for this amplifier stage is finalized at $V_{DS} =$ 1V and $I_D =$ 200µA. This sets the stable DC baseline upon which the transient AC signals will ride.
 
 
-2.AC Analysis- it is observed that the load capacitance introduces a dominant pole at the output, limiting the high-frequency response of the amplifier.
+2.Transient Analysis-
 
-Hence, the CS amplifier design meets the required specifications and demonstrates proper biasing, gain performance, and bandwidth characteristics
+*Signal Amplification (Voltage Gain)The transient analysis confirms that the circuit is actively amplifying the small AC input signal.By evaluating the peak-to-peak voltages using the plot cursors, the input swing ($\Delta V_{in}$) is approximately $19.13\text{ mV}$ and the amplified output swing ($\Delta V_{out}$) is approximately $56.7\text{ mV}$.This yields a simulated practical voltage gain of $A_v = \frac{\Delta V_{out}}{\Delta V_{in}} \approx 2.96\text{ V/V}$
 
+*Phase Inversion (180° Phase Shift)The combined graph displaying both $V_{in}$ (blue) and $V_{out}$ (green) clearly illustrates signal inversion.When the input signal rises to its positive peak, the output signal falls to its lowest trough.
+*Theoretical and Simulated values of gain  difference is likely due to the simulation factoring in the transistor's internal output resistance ($r_o$) due to channel length modulation, which sits in parallel with $R_D$ and lowers the overall gain.
 
-3.Transient Analysis-Validates the amplifier’s response to a time-varying signal. Confirms signal amplification and phase inversion, which is a characteristic of a common source amplifier.  
+3.AC Analysis-
 
-
-4.Frequency Response -
-Bandwidth and Cutoff Frequency This is where the capacitor makes a difference:
-
+* Bandwidth and Cutoff Frequency This is where the capacitor makes a difference:
+  
 Without Capacitor: The bandwidth is extremely high at $42.33\text{ GHz}$. The amplifier can sustain its gain at very high frequencies because it isn't fighting against a heavy capacitive load.
 
 With Capacitor: The bandwidth drops significantly to $24.27\text{ MHz}$.The $1.5\text{ pF}$ capacitor, combined with the output resistance of the amplifier ($5\text{ k}\Omega$ resistor $R_1$), creates a low-pass filter effect. This combination forms a "dominant pole" that shunts high-frequency AC signals to ground much earlier than the intrinsic MOSFET would on its own.
 
+Hence, the CS amplifier design meets the required specifications and demonstrates proper biasing, gain performance, and bandwidth characteristics
 
 
  
