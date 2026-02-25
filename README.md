@@ -114,9 +114,9 @@ Input and output waveform:
 
 * **Av​**=ΔVin/​ΔVout
   
-   Av=0.057/0.0186=3.06v/v
-* **Gain(dB)** = 20log10(Av)=9.714dB​​​
-* **gm= 2Id / Vov=7.49×10^−4 S**
+   Av=56.7×10^-3/19.13×10^-3=3.06v/v
+* **Gain(dB)** = 20log10(Av)=9.71dB​​​
+* We know that **gm= 2Id / Vov=7.49×10^−4 S**
 * **Av=gm×RD**
 
    Av=7.49×10^−4×5×10^3=3.74v/v
@@ -149,6 +149,7 @@ Output Graph:
  *  Av=9.4-3=6.4dB
    
  *  Bandwidth=24.27MHz
+   
 
    ### Inference: 
 
@@ -163,7 +164,13 @@ Hence, the CS amplifier design meets the required specifications and demonstrate
 3.Transient Analysis-Validates the amplifier’s response to a time-varying signal. Confirms signal amplification and phase inversion, which is a characteristic of a common source amplifier.  
 
 
-4.Frequency Response -Identifies bandwidth limitations and cut-off frequencies. Ensures the amplifier functions correctly across the required frequency range.  
+4.Frequency Response -
+Bandwidth and Cutoff Frequency This is where the capacitor makes a difference:
+
+Without Capacitor: The bandwidth is extremely high at $42.33\text{ GHz}$. The amplifier can sustain its gain at very high frequencies because it isn't fighting against a heavy capacitive load.
+
+With Capacitor: The bandwidth drops significantly to $24.27\text{ MHz}$.The $1.5\text{ pF}$ capacitor, combined with the output resistance of the amplifier ($5\text{ k}\Omega$ resistor $R_1$), creates a low-pass filter effect. This combination forms a "dominant pole" that shunts high-frequency AC signals to ground much earlier than the intrinsic MOSFET would on its own.
+
 
 
  
