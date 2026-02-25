@@ -92,9 +92,21 @@ Common-Source NMOS Amplifier: DC Voltage Transfer Characteristic (VTC):
 * **On the graph:** The flattened-out section on the bottom right, starting around $V_{in} =$ **1.2V** and extending to **2.0V**.
 * **Circuit behavior:** As $V_{in}$ continues to increase, $V_{out}$ drops so low that the transistor leaves saturation and enters the triode region. Here, the MOSFET acts like a voltage-controlled resistor. The curve flattens out because the transistor's "on-resistance" is very low, pulling $V_{out}$ close to ground (**0V**), but it doesn't reach a perfect zero due to that small residual resistance.
 ## Transient Analysis:
+Input voltage waveform:
+
+<img width="1917" height="911" alt="vin lab1" src="https://github.com/user-attachments/assets/b5cd4e5f-6d30-4642-8674-a98b952c56c4" />
+
+Output waveform:
+
+
+<img width="1919" height="891" alt="Screenshot 2026-02-25 081308" src="https://github.com/user-attachments/assets/471b2e36-7272-46af-a24d-6484a922dc0b" />
+
+Input and output waveform:
+
 <img width="1919" height="870" alt="Screenshot 2026-02-23 002154" src="https://github.com/user-attachments/assets/4d4f8c1e-9ece-4abc-b77f-601823d1241c" />
 
 * **Graph Interpretation**:
+* 
 * Amplification (Voltage Gain):The voltage gain ($A_v$) is the ratio of output AC amplitude to input AC amplitude.
 * Phase Shift (Signal Inversion):This represents a 180-degree phase shift. This happens because as the input gate voltage increases, the transistor turns "on" , drawing more drain current. This increased current causes a larger voltage drop across the 5kΩ drain resistor (R1), which in turn lowers the voltage at the drain node (Vout).
   
