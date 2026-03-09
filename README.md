@@ -171,7 +171,7 @@ Output Graph:
    ### Inference: 
 
 1.DC Analysis-
-* DC AnalysisParameter Tuning for Target Bias: The initial LTspice operating point simulation did not yield the desired drain current ($I_D$).The data table illustrates the direct proportionality between the transistor's channel width and its drain current
+* DC AnalysisParameter Tuning for Target Bias: The initial LTspice operating point simulation did not yield the desired drain current ($I_D$)due to Channel Length Modulation ($\lambda$) In reality, the depletion region at the drain expands, slightly shortening the effective channel length.The data table illustrates the direct proportionality between the transistor's channel width and its drain current
 * Confirmation of Amplifier operating point : The final calculation verifies that the tuned MOSFET is operating in the saturation region. Because the drain-source voltage ($V_{DS}$) is 1V, and it satisfies the amplifier condition VDS>=VGS-VTH ; $V_{DS} > V_{OV}$ (where $V_{OV}$ is the overdrive voltage), the transistor is correctly biased to amplify AC signals without immediate clipping.
 * Established Q-Point: The concluding quiescent operating point (Q-point) for this amplifier stage is finalized at $V_{DS} =$ 1V and $I_D =$ 200µA. This sets the stable DC baseline upon which the transient AC signals will ride.
 
