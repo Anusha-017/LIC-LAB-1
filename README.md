@@ -150,6 +150,22 @@ Output Graph:
  *   Cutoff frequency=24.14MHz
    
  *  Bandwidth=24.14MHz
+
+
+## 10. Comparision Table
+
+| Parameter   | Theoretical Value | Simulated Value |
+|--------------|-------------|-----------|
+|Supply Voltage (VDD)   | 2         | 2        |
+| Gain (V/V)   | 3.7         | 3         |
+| Gain (dB)    | 11.36 dB    | 9.54 dB   |
+| ID           | 200 µA      | 153 µA    |
+| W            | 1.07 µm     | 1.51 µm   |
+| Output Voltage (Vout)          | 1    | 0.99   |
+| Transconductance (gm)          | 0.749 mS   | 0.592 mS   |
+|Region of Operation             |  Saturation     |  Saturation  |
+
+
    
 
    ### Inference: 
