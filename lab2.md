@@ -28,25 +28,19 @@ Given: VDD = 2V, Power <= 1.5mW, CL = 1pF, L = 180nm, Vin = 10mV, f = 1kHz
 # 5. Design Calculation:
 Given Specifications:
 
-* VDD = 2 V
+| **Parameter**               | **Symbol** | **Value**     | **Unit** |
+| --------------------------- | ---------- | ------------- | -------- |
+| Supply Voltage              | VDD        | 2             | V        |
+| Overdrive Voltage           | VOV        | 0.25          | V        |
+| Load Capacitance            | CL         | 1             | pF       |
+| Channel Length (NMOS, PMOS) | Ln = Lp    | 180           | nm       |
+| Maximum Power               | P ≤        | 1.5           | mW       |
+| Relative Permittivity       | εr         | 3.9           | —        |
+| Permittivity of Free Space  | ε₀         | 8.854 × 10⁻¹² | F/m      |
+| Oxide Thickness             | tox        | 4.1 × 10⁻⁹    | m        |
+| Electron Mobility           | μn         | 273.809       | cm²/V·s  |
+| Hole Mobility               | μp         | 115.689       | cm²/V·s  |
 
-* VOV = 0.25 V
-
-* CL = 1 pF
-
-* Ln = Lp = 180 nm
-
-* P<= 1.5mW
-
-* εr = 3.9
-
-* ε0 = 8.854 × 10⁻¹² F/m
-
-* tox = 4.1 × 10⁻⁹ m
-
-* μn = 273.809 cm²/Vs
-
-* μp = 115.689 cm²/Vs
 
 1)Power constraint:
   
@@ -82,8 +76,9 @@ Wp = 11.82 µm
 for Wn = 5 µm and Wp = 11.82 µm
 <img width="846" height="520" alt="image" src="https://github.com/user-attachments/assets/aa55a6aa-fcce-4ae8-87d3-19e345778e42" />
 
+After altering Width of mosfet to set operating point 
+for Wn = 24.8 µm and Wp = 35.7 µm we get:
 
-for Wn = 24.8 µm and Wp = 35.7 µm
 <img width="847" height="587" alt="image" src="https://github.com/user-attachments/assets/d49945e6-006e-4efc-802d-ba8e4f586818" />
 
 # 7. DC Sweep Analysis:
@@ -93,11 +88,30 @@ for Wn = 24.8 µm and Wp = 35.7 µm
 
 <img width="1918" height="920" alt="image" src="https://github.com/user-attachments/assets/3c199bf9-13e7-4c1b-87a9-3e5ede56710a" />
 
+We can observe the 180 degree phase shift and the amplification of the output signal.
 
+Peak to peak value of input voltage is : Vin(p-p) = 20mV 
+
+Peak to peak value of output voltage is
+
+Vout (max) = 1.34 V
+
+Vout (min) =  1.09 V
+
+Thus, Vout (p-p) = 0.25V
+
+Av = Vout(p-p) / Vin(p-p)=12.5v/v
+
+Av (in dB)=20*log(Av)=21.9dB
 
 
 # 9. AC Analysis:
-<img width="1918" height="877" alt="image" src="https://github.com/user-attachments/assets/9f9f8db5-ce11-4691-87d8-0647bce87cd2" />
+
+<img width="1915" height="913" alt="image" src="https://github.com/user-attachments/assets/c7fcc3ce-25ed-453d-992c-d823eaa59106" />
+
+**midband gain=22.17dB**
+
+**Bandwidth (frequency)=182.51602MHz**
 
 
 
