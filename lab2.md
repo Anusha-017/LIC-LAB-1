@@ -252,18 +252,24 @@ Av (in dB)=20*log(Av)=21.9dB
 
 <img width="1912" height="577" alt="Image" src="https://github.com/user-attachments/assets/0854c69e-c2db-471f-a6fa-91bdca626fad" />
 
+  1. Midband Voltage Gain:
 - midband gain=22.17dB
 - |Av|dB = 20 log10(|Av|)
   |Av| = 10^(22.17/20)
   |Av| ≈ 12.82 V/V
-  
 
-**Bandwidth (frequency)=182.51602MHz**
+2. Low-Frequency Phase Shift:
+    - The dotted red line represents the phase shift (read from the right Y-axis). In the flat midband region, the phase is exactly 180°.
+    - This 180° shift perfectly confirms that your circuit is operating as an inverting amplifier, which is the defining characteristic of a Common-Source topology. When the input signal goes positive, the output signal goes negative.
+3. −3 dB Cutoff Frequency (Bandwidth):
+ - The bandwidth is determined by the frequency at which the gain drops by 3 dB from its maximum midband value.  
+ - that is frequency at (22.17-3)dB which is **182.45MHz**
+4. Unity Gain Frequency (fT):
+   - This is the frequency at which the amplifier stops amplifying and the gain drops to 0 dB (a linear gain of 1 V/V).
+   - frequency at 0dB is **3.05GHz**
 
-
-
-# 7. Inference:
-
+# 7. Conclusion:
+This experiment successfully verified the design and performance characteristics of a Common-Source CMOS amplifier utilizing a PMOS active load and source degeneration.The simulation results closely align with theoretical expectations, illustrating how active loading can be used to achieve reasonable voltage gain without requiring excessively large passive resistor values, a crucial technique in modern integrated circuit design.
 
 
 
