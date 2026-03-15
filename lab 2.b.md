@@ -193,7 +193,7 @@ to set opperating point new mosfet Dimensions are
 - Vout (peak-to-peak)=70.97mV
 - Vin (peak-to-peak)=19.25mV
 - Gain(Av)=Vout/Vin=3.68 V/V
-
+- Gain(dB)=20log(Av)=11.31
 
 ## AC Analysis:
 
