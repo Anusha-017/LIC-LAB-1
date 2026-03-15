@@ -181,6 +181,30 @@ for Wn = 24.8 µm and Wp = 35.7 µm we get:
 
 <img width="847" height="587" alt="image" src="https://github.com/user-attachments/assets/d49945e6-006e-4efc-802d-ba8e4f586818" />
 
+1. Analysis of M1 (NMOS):
+
+   - VGS = VG − VS
+    VGS = 0.81 − 0.200035
+    VGS = 0.609965 V
+   - VDS = VD − VS
+VDS = 1.22261 − 0.200035
+VDS = 1.022575 V
+
+Condition VDS ≥ VGS − Vthn is satisfied therefore mosfet is working in saturation region.
+
+2. for M2(PMOS):
+   VSG = VS − VG
+VSG = 2.0 − 1.36
+VSG = 0.64 V
+
+VSD = VS − VD
+VSD = 2.0 − 1.22261
+VSD = 0.77739 V
+
+Condition VSD ≥ VSG − |Vthp| is satisfied therefore mosfet is working in saturation region. 
+
+
+
 # 7. DC Sweep Analysis:
 <img width="1918" height="417" alt="image" src="https://github.com/user-attachments/assets/20f62c91-3ae8-450d-abb5-5525369a5457" />
 
