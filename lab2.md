@@ -7,7 +7,7 @@ Design CS amplifier with PMOS active load configuration in tsmc180nmtech.lib in 
 
 Given: VDD = 2V, Power <= 1.5mW, CL = 1pF, L = 180nm, Vin = 10mV, f = 1kHz
 
-# 4. Theory:
+# 2. Theory:
 **Circuit Topology Identification:**
 
 
@@ -25,7 +25,7 @@ Given: VDD = 2V, Power <= 1.5mW, CL = 1pF, L = 180nm, Vin = 10mV, f = 1kHz
 # 3. Circuit Diagram:
 <img width="1116" height="545" alt="image" src="https://github.com/user-attachments/assets/f38d06a0-d4f7-40a1-881d-3eb3e55bf039" />
 
-# 5. Design Calculation:
+# 4. Design Calculation:
 Given Specifications:
 
 | **Parameter**               | **Symbol** | **Value**     | **Unit** |
@@ -153,7 +153,7 @@ Wp = 11.82 µm
 
 ---
 
-# 4. Summary of Design Parameters
+## Summary of Design Parameters:
 
 | Parameter | Value |
 |-----------|-------|
@@ -205,7 +205,7 @@ Av = Vout(p-p) / Vin(p-p)=12.5v/v
 Av (in dB)=20*log(Av)=21.9dB
 
 
-# 9. AC Analysis:
+# 6. AC Analysis:
 
 <img width="1915" height="913" alt="image" src="https://github.com/user-attachments/assets/c7fcc3ce-25ed-453d-992c-d823eaa59106" />
 
@@ -215,7 +215,7 @@ Av (in dB)=20*log(Av)=21.9dB
 
 
 
-# 10. Inference:
+# 7. Inference:
 
 
 
