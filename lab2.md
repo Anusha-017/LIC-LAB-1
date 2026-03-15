@@ -191,22 +191,41 @@ VDS = 1.22261 − 0.200035
 VDS = 1.022575 V
 
 Condition VDS ≥ VGS − Vthn is satisfied therefore mosfet is working in saturation region.
-
-2. for M2(PMOS):
-   VSG = VS − VG
+  
+  2. for M2(PMOS):
+   - VSG = VS − VG
 VSG = 2.0 − 1.36
 VSG = 0.64 V
 
-VSD = VS − VD
+  - VSD = VS − VD
 VSD = 2.0 − 1.22261
 VSD = 0.77739 V
 
 Condition VSD ≥ VSG − |Vthp| is satisfied therefore mosfet is working in saturation region. 
 
 
-
 # 7. DC Sweep Analysis:
 <img width="1918" height="417" alt="image" src="https://github.com/user-attachments/assets/20f62c91-3ae8-450d-abb5-5525369a5457" />
+
+1. Cutoff Region (Vin < 0.6 V)
+The output voltage remains almost constant near the supply voltage.
+
+2. Transition / Saturation Region (0.6 V < Vin < 1.0 V)
+
+The output voltage drops sharply from about **1.95 V to 0.25 V**.
+- When **Vin exceeds the threshold voltage**, NMOS **M1 turns ON**.
+- M1 begins to conduct current and pulls the output voltage down.
+- In this region, **both M1 and M2 operate in saturation**.
+
+This is the **active region of the amplifier**.
+
+3. Circuit Operation
+
+- When **Vin exceeds the threshold voltage**, NMOS **M1 turns ON**.
+- M1 begins to conduct current and pulls the output voltage down.
+- In this region, **both M1 and M2 operate in saturation**.
+
+This is the **active region of the amplifier**.
 
 # 8. Transient Analysis:
 
@@ -231,9 +250,13 @@ Av (in dB)=20*log(Av)=21.9dB
 
 # 6. AC Analysis:
 
-<img width="1915" height="913" alt="image" src="https://github.com/user-attachments/assets/c7fcc3ce-25ed-453d-992c-d823eaa59106" />
+<img width="1912" height="577" alt="Image" src="https://github.com/user-attachments/assets/0854c69e-c2db-471f-a6fa-91bdca626fad" />
 
-**midband gain=22.17dB**
+- midband gain=22.17dB
+- |Av|dB = 20 log10(|Av|)
+  |Av| = 10^(22.17/20)
+  |Av| ≈ 12.82 V/V
+  
 
 **Bandwidth (frequency)=182.51602MHz**
 
