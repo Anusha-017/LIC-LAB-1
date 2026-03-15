@@ -199,7 +199,21 @@ to set opperating point new mosfet Dimensions are
 
 <img width="1918" height="608" alt="Image" src="https://github.com/user-attachments/assets/d71324ce-7c75-49ff-b85b-5ea18701c49b" />
 
+ 1. Midband Voltage Gain:
+- midband gain=11.35dB
+- |Av|dB = 20 log10(|Av|)
+  |Av| = 10^(11.35/20)
+  |Av| ≈ 3.68 V/V
 
+2. Low-Frequency Phase Shift:
+    - The dotted red line represents the phase shift (read from the right Y-axis). In the flat midband region, the phase is exactly 180°.
+    - This 180° shift perfectly confirms that your circuit is operating as an inverting amplifier, which is the defining characteristic of a Common-Source topology. When the input signal goes positive, the output signal goes negative.
+3. −3 dB Cutoff Frequency (Bandwidth):
+ - The bandwidth is determined by the frequency at which the gain drops by 3 dB from its maximum midband value.  
+ - that is frequency at (11.35-3)dB which is **135.27MHz**
+4. Unity Gain Frequency (fT):
+   - This is the frequency at which the amplifier stops amplifying and the gain drops to 0 dB (a linear gain of 1 V/V).
+   - frequency at 0dB is **490MHz**
 
 
 
