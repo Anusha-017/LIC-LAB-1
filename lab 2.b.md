@@ -213,9 +213,12 @@ to set opperating point new mosfet Dimensions are
  - that is frequency at (11.35-3)dB which is **135.27MHz**
 4. Unity Gain Frequency (fT):
    - This is the frequency at which the amplifier stops amplifying and the gain drops to 0 dB (a linear gain of 1 V/V).
-   - frequency at 0dB is **490MHz**
+   - frequency at 45dB is **490MHz**
 
+## Conclusion:
+In this experiment, a **CMOS Common-Source amplifier with a PMOS active load and an NMOS current sink** was designed and analyzed using **LTspice with the TSMC 0.18 µm technology library**.
 
+The biasing network was calculated to ensure that all MOSFETs operate in the **saturation region**, which is essential for proper analog amplification. The calculated bias voltages were implemented in the LTspice schematic and verified using **DC operating point analysis**.
 
 
 
