@@ -40,37 +40,137 @@ Given Specifications:
 | Oxide Thickness             | tox        | 4.1 × 10⁻⁹    | m        |
 | Electron Mobility           | μn         | 273.809       | cm²/V·s  |
 | Hole Mobility               | μp         | 115.689       | cm²/V·s  |
+# CMOS Amplifier Design (TSMC 0.18µm) – Calculation
+
+- Assumed Drain Current:  
+  ID = 200 µA
 
 
-1)Power constraint:
-  
-  Assuming ID =200µA which satisfy P<=1.5mW (P=V*I ; 2×200×10^−6 ; 400µW<=1.5mW)
+## For NMOS Design (M1):
 
-2)Output Voltage :
+## Gate Source Voltage
 
- Vout = VDD/2 + VRS
+VGS = Vthn + Vov
 
- Vout = 1 + 0.2 = 1.2 V
+VGS = 0.36 + 0.25
 
-3)NMOS Width Calculation:
+VGS = **0.61 V**
 
- Drain current equation:  ID = (1/2) kn' (W/L) (VOV)^2
+---
 
-Where
+## Source Resistor
 
-kn' = μn Cox
+Assume voltage across source resistor:
 
-Cox = εox / tox
+VRS = 0.2 V
 
-kn' = 2.306 × 10⁻⁴
+Using Ohm's law
 
-Now solving for W:
+ID × RS = VRS
 
+200 × 10⁻⁶ × RS = 0.2
+
+RS = **1 kΩ**
+
+---
+
+## Output Bias Voltage
+
+Vout ≈ VDD/2 + 0.2
+
+Vout = 2/2 + 0.2
+
+Vout = **1.2 V**
+
+---
+
+## Width Calculation
+
+MOSFET current equation
+
+ID = (1/2) μnCox (W/L) (VGS − VT)²
+
+Given
+
+kn = μnCox = 230 × 10⁻⁶  
+L = 180 nm  
+
+Substitute values
+
+200 × 10⁻⁶ = 1/2 × (230 × 10⁻⁶) × (W / 180 × 10⁻⁹) × (0.25)²
+
+Solving
+
+W ≈ **5 µm**
+
+Thus
+
+L = 0.18 µm  
 W = 5 µm
-4)PMOS Width Calculation
+
+---
+
+## For Bias Voltage for M3
+
+Gate voltage for M3:
+
+VB1 = VGS + IDRS
+
+VB1 = 0.61 + (200 × 10⁻⁶ × 1000)
+
+VB1 = 0.61 + 0.2
+
+VB1 = **0.81 V**
+
+---
+
+## PMOS Design (M2)
+
+PMOS overdrive condition
+
+VSG − |Vthp| = Vov
+
+VSG = Vov + |Vthp|
+
+VSG = 0.25 + 0.39
+
+VSG = **0.64 V**
+
+---
+
+## Gate Bias Voltage
+
+VB2 = VDD − VSG
+
+VB2 = 2 − 0.64
+
+VB2 = **1.36 V**
+
+## PMOS Width Calculation
  Wp = (2 ID L) / (μp Cox (VOV)²)
 
 Wp = 11.82 µm
+
+---
+
+# 4. Summary of Design Parameters
+
+| Parameter | Value |
+|-----------|-------|
+| VDD | 2 V |
+| ID | 200 µA |
+| Vov | 0.25 V |
+| RS | 1 kΩ |
+| VGS (M1) | 0.61 V |
+| VB1 | 0.81 V |
+| VB2 | 1.36 V |
+| NMOS W/L | 5 µm / 0.18 µm |
+| PMOS W/L | 11.82 µm |
+
+---
+
+# 5. Simulation Setup (LTSpice)
+
 
 # DC Analysis:
 for Wn = 5 µm and Wp = 11.82 µm
