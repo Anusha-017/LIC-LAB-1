@@ -168,13 +168,31 @@ After substituting the **TSMC 0.18 µm process parameters**, the transistor widt
 
 <img width="845" height="560" alt="Image" src="https://github.com/user-attachments/assets/8ac02ca0-4b63-4993-8285-4a75b6388932" />
 
+to set opperating point new mosfet Dimensions are
+
+| Transistor | Type | Width (W) | Length (L) |
+|------------|------|-----------|-----------|
+| M1 | NMOS Driver | 16 µm | 0.18 µm |
+| M3 | NMOS Current Sink | 16 µm | 0.18 µm |
+| M2 | PMOS Active Load | 34.5 µm | 0.18 µm |
+## DC sweep:
+
+<img width="1917" height="537" alt="Image" src="https://github.com/user-attachments/assets/5ef4dc3b-6ebe-45e3-bccc-ad90ed7f249d" />
+
+## Key Takeaways
+* **Optimal Bias Point:** For maximum linear swing, the DC bias point (quiescent point) for the input should be set squarely in the middle of the active region, around **0.8V to 0.85V**.
+* **Output Swing:** The maximum output swing is asymmetrical. It can swing close to the 2.0V rail but is clamped at roughly 0.45V on the lower end due to the stacked NMOS structure (the driver and the current sink).
+
 
 ## Transient Analysis:
 
-<img width="1918" height="918" alt="Image" src="https://github.com/user-attachments/assets/8f774dbc-9fc2-44a0-93f9-658a5ceda9ed" />
+<img width="1918" height="915" alt="Image" src="https://github.com/user-attachments/assets/1f34329b-bc10-4f6b-8c97-b40813db0dcc" />
 
+<img width="1917" height="861" alt="Image" src="https://github.com/user-attachments/assets/0a93b008-4c88-4bad-856a-de6d9a55e7cc" />
 
-
+- Vout (peak-to-peak)=70.97mV
+- Vin (peak-to-peak)=19.25mV
+- Gain(Av)=Vout/Vin=3.68 V/V
 
 
 ## AC Analysis:
