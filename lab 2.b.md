@@ -4,11 +4,164 @@
 
 <img width="1186" height="808" alt="Image" src="https://github.com/user-attachments/assets/91f81471-568a-4606-91e1-0a22780771d6" />
 
-# DESIGN CALCULATIONS:
+## Design Calculation:
+# CMOS Amplifier Design Calculations
+
+This section details the theoretical hand-calculations used to bias the **Common-Source amplifier with a PMOS active load and an NMOS current sink**.
+
+---
+
+# 1. Target Specifications & Given Parameters
+
+Before sizing the transistors, the following process parameters and target operating conditions were defined.
+
+- **Supply Voltage (VDD)** = 2 V  
+- **Target Drain Current (ID)** = 200 µA  
+- **Target Overdrive Voltage (VOV)** = 0.25 V (assumed uniform for all transistors)  
+- **NMOS Threshold Voltage (Vthn)** = 0.36 V  
+- **PMOS Threshold Voltage (|Vthp|)** = 0.39 V  
+
+---
+
+# 2. DC Biasing Calculations
+
+## Biasing MOSFET 2 (PMOS Active Load – M2)
+
+The PMOS transistor **M2** acts as the active load.  
+Its source is connected to **VDD**.
+
+- Source-to-Gate Voltage
+
+VOV2 = VSG2 − |Vthp|
+
+0.25 = VSG2 − 0.39
+
+VSG2 = 0.64 V
+
+- Gate Bias Voltage
+
+VS2 − VG2 = 0.64
+
+2.0 − VG2 = 0.64
+
+VG2 = 1.36 V
+
+**Result**
+
+VB1 = 1.36 V  
+
+This corresponds to the **DC source V4 in the LTspice schematic**.
+
+---
+
+## Biasing MOSFET 3 (NMOS Current Sink – M3)
+
+The NMOS transistor **M3** sets the bias current for the branch.  
+Its source is connected to **ground**.
+
+-  Gate-to-Source Voltage
+
+VGS3 = VOV + Vthn
+
+VGS3 = 0.25 + 0.36
+
+VGS3 = 0.61 V
+
+- Gate Bias Voltage
+
+Since VS3 = 0
+
+VG3 = 0.61 V
+
+**Result**
+
+VB2 = 0.61 V  
+
+This corresponds to **DC source V3 in the LTspice schematic**.
+
+-  Saturation Condition Check
+
+For M3 to remain in saturation
+
+VDS3 ≥ VOV
+
+VD3 − 0 ≥ 0.25
+
+Design assumption
+
+VS1 = VD3 ≈ 0.3 V
+
+This ensures M3 stays safely in saturation.
+
+---
+
+## Biasing MOSFET 1 (NMOS Driver – M1)
+
+M1 is the **main amplifying transistor**.
+
+Its source is connected to the drain of **M3**.
+
+VS1 = 0.3 V
+
+- Gate-to-Source Voltage
+
+VGS1 = VOV + Vthn
+
+VGS1 = 0.25 + 0.36
+
+VGS1 = 0.61 V
+
+ - Input Bias Voltage
+
+VG1 − VS1 = 0.61
+
+VG1 − 0.3 = 0.61
+
+VG1 = 0.91 V
+
+**Result**
+
+VIN = 0.91 V  
+
+This matches the **DC offset of the sine source V2 in LTspice**.
+
+---
+
+## Transistor Sizing (Width Calculation)
+
+The MOSFET current equation is used:
+
+ID = (1/2) μCox (W/L) (VOV)^2
+
+Using:
+
+ID = 200 µA  
+VOV = 0.25 V  
+L = 0.18 µm  
+
+After substituting the **TSMC 0.18 µm process parameters**, the transistor widths are calculated.
+
+---
+| Transistor | Type | Width (W) | Length (L) |
+|------------|------|-----------|-----------|
+| M1 | NMOS Driver | 5 µm | 0.18 µm |
+| M3 | NMOS Current Sink | 5 µm | 0.18 µm |
+| M2 | PMOS Active Load | 11.8 µm | 0.18 µm |
 
 
+---
 
+## Final Bias Voltages
 
+| Node | Voltage |
+|-----|--------|
+| VDD | 2.0 V |
+| VB1 (PMOS Gate) | 1.36 V |
+| VB2 (NMOS Sink Gate) | 0.61 V |
+| VIN (Input Bias) | 0.91 V |
+| VS1 | 0.3 V |
+
+---
 
 
 ## DC Analysis:
