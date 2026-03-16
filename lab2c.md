@@ -110,7 +110,34 @@ Gain (dB)=20*log(Av)
    - This is the frequency at which the amplifier stops amplifying and the gain drops to 0 dB (a linear gain of 1 V/V).
    - frequency at 45dB is **490MHz**
 
-         
+
+
+
+# Inferance:
+Circuit 1: 
+- Resistive Source Degeneration Element: A standard passive resistor ($R_1 = 1\text{k}\Omega$).
+- Characteristics: This is the classical approach. The resistor provides linear feedback, stabilizing the DC operating point and increasing the input range. However, in integrated circuit (IC) design, passive resistors like this can consume a significant amount of silicon area.
+
+Circuit 2:
+- Current Source Degeneration Element: An NMOS transistor ($M_3$) biased with a constant DC voltage ($V_3 = 0.61\text{V}$) at its gate.
+- Characteristics: As long as $M_3$ is biased in the saturation region, it acts as a constant DC current source. This provides a very high incremental (AC) resistance while allowing you to control the exact DC tail current flowing through the amplifier.
+
+Circuit 3: Diode-Connected Source Degeneration
+- Degeneration Element: An NMOS transistor ($M_3$) configured as a "diode-connected" device (its gate is tied directly to its drain).
+- Characteristics: A diode-connected transistor is always in saturation and acts as an active resistor. Its small-signal resistance is approximately $1/g_{m3}$. This is highly preferred in CMOS IC design because it replaces the bulky passive resistor from Circuit 1 with a much smaller MOSFET that scales well with the rest of the circuit.
+
+  ### Comparission Table 
+| Parameter | Exp 2A | Exp 2B | Exp 2C |
+|-----------|--------------|--------------|--------------|
+| Source Element | Source Resistor (Rs) | Current Source Degeneration Element | Diode-Connected Source Degeneration |
+| Equivalent Source Resistance (RS) | Resistor(1k) | r03 | 1/gm3 |
+| Transconductance (Gm) | 1/(1+gm1​R1​) | gm1/(1+​ro3​gm1) ​​≈ro3​1 | gm1/(1+​​gm1/gm3) |
+| Linearity | Excellent | Poor (for voltage amplification) | Moderate to Good|
+| Theoretical Gain (V/V) |  | |  |
+| Simulated Gain (V/V) |  |  |  |
+| Simulated Gain (dB) |   |  |  |
+| Bandwidth |  MHz |  MHz |  MHz |  
+
     
         
 
