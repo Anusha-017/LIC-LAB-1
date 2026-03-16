@@ -15,3 +15,20 @@ the schematic symbol of an op-amp:
 <img width="662" height="376" alt="Image" src="https://github.com/user-attachments/assets/58e7094c-422c-49cd-ab19-85110abee277" />
 
 The input differential amplifier stage of the op-amp is designed to be operated in the differential mode, the differential inputs are designated by the (+) and (-) notations. The (+) input is the non-inverting input. An ac signal (or dc voltage) applied to this input produces an in-phase (or same polarity) signal at the output. On the other hand, the (-) input is the inverting input because an ac signal (or dc voltage) applied to this input produces a 180° out of phase (or opposite polarity) signal at the output.
+
+# Inverting bias current :
+
+<img width="372" height="347" alt="Image" src="https://github.com/user-attachments/assets/bf044d79-2c9a-4c63-875d-1b9845eed6d4" />
+
+### STEPS:
+- Click on the components button to place the component on the table.
+- Make connections as per the circuit diagram.
+- Click on 'Check Connection' button to check connections. If correct, Click on 'Show output voltage' button to view output on DMM.
+- Calculate the inverting bias current using the formula:
+      IB1 = Vo/Rf
+          =0.024/470k
+          =0.05uA
+- Click on 'Result' button and enter the claculated value.
+- Click on 'Reset' button and proceed in the same way to calculate the input bias current at non-inverting terminal.
+
+<img width="1058" height="686" alt="Image" src="https://github.com/user-attachments/assets/77ab8eea-6de6-4088-8e59-397b272dc0d4" />
