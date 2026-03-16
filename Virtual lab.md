@@ -70,7 +70,9 @@ IB = (IB1 + IB2)/2(where, IB1 has to be calculated from previous part)
 Circuit Diagram:
 
 <img width="395" height="316" alt="image" src="https://github.com/user-attachments/assets/25509c1d-719e-43b6-a295-c364b97bdbf4" />
+
 ### STEPS:
+
 - Make connections as per the circuit diagram.
 - Click on 'Check Connection button to check connections. If correct, Click on 'Show output voltage' button to view output on DMM.
 - Calculate the input offset current using the formula:
