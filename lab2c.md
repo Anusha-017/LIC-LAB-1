@@ -85,7 +85,22 @@ To obtain desired operating point width of mosfet is varied
 
 ### Gain Calculation: 
 Gain(Av)=vout(p-p)/vin(p-p)
-        =
+
+       =355.506mV/19.709mV
+       
+        =18.03V/V
+Gain (dB)=20*log(Av)
+
+         = 25.12dB
+# AC Analysis :
+
+<img width="1912" height="690" alt="Image" src="https://github.com/user-attachments/assets/7506a113-d023-4374-9d5b-dc28e06b3542" />
+
+
+
+         
+    
+        
 
 
 
