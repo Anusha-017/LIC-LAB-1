@@ -96,7 +96,19 @@ Gain (dB)=20*log(Av)
 
 <img width="1912" height="690" alt="Image" src="https://github.com/user-attachments/assets/7506a113-d023-4374-9d5b-dc28e06b3542" />
 
+ 1. Midband Voltage Gain:
+- midband gain=25.33dB
+- |Av|dB = 20 log10(|Av|)
+  |Av| = 10^(25.33/20)
+  |Av| ≈ 18.47 V/V
 
+
+3. −3 dB Cutoff Frequency (Bandwidth):
+ - The bandwidth is determined by the frequency at which the gain drops by 3 dB from its maximum midband value.  
+ - that is frequency at (25.33-3)dB which is **343.332MHz**
+4. Unity Gain Frequency (fT):
+   - This is the frequency at which the amplifier stops amplifying and the gain drops to 0 dB (a linear gain of 1 V/V).
+   - frequency at 45dB is **490MHz**
 
          
     
