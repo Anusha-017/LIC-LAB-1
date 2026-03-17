@@ -226,9 +226,10 @@ ro = 1 / (λ*ID)
    =50kohms
    
 Av = -gm1 (ro1 || ro2) / (1 + gm1 · ro3)
-   =0.037V/V
-Av (dB)=20*log(0.037)
-       =28.63dB
+   = − 0.45 V/V
+   
+Av (dB)=20*log(0.45)
+       =−6.935
 
 ## Conclusion:
 In this experiment, a **CMOS Common-Source amplifier with a PMOS active load and an NMOS current sink** was designed and analyzed using **LTspice with the TSMC 0.18 µm technology library**.
