@@ -92,6 +92,15 @@ Gain(Av)=vout(p-p)/vin(p-p)
 Gain (dB)=20*log(Av)
 
          = 25.12dB
+### Theoritical gain:
+
+Av = - gm1 × ro2/(1+gm1/gm3)
+   = - (2mS × 50kΩ)/2
+Av = -50 V/V
+
+Gain in dB: Av(dB) = 20 log(50)
+Av(dB) = 33.97 dB
+
 # AC Analysis :
 
 <img width="1912" height="690" alt="Image" src="https://github.com/user-attachments/assets/7506a113-d023-4374-9d5b-dc28e06b3542" />
@@ -101,7 +110,6 @@ Gain (dB)=20*log(Av)
 - |Av|dB = 20 log10(|Av|)
   |Av| = 10^(25.33/20)
   |Av| ≈ 18.47 V/V
-
 
 3. −3 dB Cutoff Frequency (Bandwidth):
  - The bandwidth is determined by the frequency at which the gain drops by 3 dB from its maximum midband value.  
