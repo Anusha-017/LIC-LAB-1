@@ -259,7 +259,7 @@ Av (in dB)=20*log(Av)=21.9dB
   **|Av| ≈ 12.82 V/V**
 
 
- # Theoretical: 
+ #### Theoretical: 
 
  gm = 2ID / VOV
   
