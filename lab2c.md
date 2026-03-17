@@ -133,9 +133,9 @@ Circuit 3: Diode-Connected Source Degeneration
 | Equivalent Source Resistance (RS) | Resistor(1k) | r03 | 1/gm3 |
 | Transconductance (Gm) | 1/(1+gm1​R1​) | gm1/(1+​ro3​gm1) ​​≈ro3​1 | gm1/(1+​​gm1/gm3) |
 | Linearity | Excellent | Poor (for voltage amplification) | Moderate to Good|
-| Theoretical Gain (V/V) |15.38  | |  |
-| Simulated Gain (V/V) |  |  |  |
-| Simulated Gain (dB) |   |  |  |
+| Theoretical Gain (V/V) |15.38  |6.93  | 33.97 |
+| Simulated Gain (V/V) |12.82  | 3.68 |18.47  |
+| Simulated Gain (dB) | 22.17  | 11.35 | 25.33 |
 | Bandwidth |  MHz |  MHz |  MHz |  
 
     
