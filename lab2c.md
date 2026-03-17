@@ -136,7 +136,7 @@ Circuit 3: Diode-Connected Source Degeneration
 | Theoretical Gain (V/V) |15.38  |6.93  | 33.97 |
 | Simulated Gain (V/V) |12.82  | 3.68 |18.47  |
 | Simulated Gain (dB) | 22.17  | 11.35 | 25.33 |
-| Bandwidth |  MHz |  MHz |  MHz |  
+| Bandwidth |  182.45MHz |  135.27MHz |  343.33MHz |  
 
     
         
