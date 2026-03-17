@@ -195,6 +195,35 @@ to set opperating point new mosfet Dimensions are
 - Gain(Av)=Vout/Vin=3.68 V/V
 - Gain(dB)=20log(Av)=11.31
 
+# Theoretical: 
+
+ gm = 2ID / VOV
+  
+  gm = (2 × 200 × 10⁻⁶) / 0.25
+ 
+  gm = 1.6 × 10⁻³ S
+ 
+
+  ro = 1 / (λ ID)
+ 
+  ro = 1 / (0.1 × 200 × 10⁻⁶)
+ 
+  ro = 50 kΩ
+
+
+  (ro1 || ro2) = 25 kΩ
+ 
+
+  Av = - gm (ro1 || ro2) / (1 + gm RS) Av = - (1.6 × 10⁻³ × 25 × 10³) / (1 + 1.6 × 10⁻³ × 1 × 10³) Av = -40 / 2.6
+ 
+  Av = -15.38 V/V
+
+
+  Av(dB) = 20 log(15.38)
+ 
+  Av(dB) = 23.74 dB
+
+
 ## AC Analysis:
 
 <img width="1918" height="608" alt="Image" src="https://github.com/user-attachments/assets/d71324ce-7c75-49ff-b85b-5ea18701c49b" />
