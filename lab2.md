@@ -258,6 +258,36 @@ Av (in dB)=20*log(Av)=21.9dB
   |Av| = 10^(22.17/20)
   |Av| ≈ 12.82 V/V
 
+
+ # Theoretical: 
+
+ gm = 2ID / VOV
+  
+  gm = (2 × 200 × 10⁻⁶) / 0.25
+ 
+  gm = 1.6 × 10⁻³ S
+ 
+
+  ro = 1 / (λ ID)
+ 
+  ro = 1 / (0.1 × 200 × 10⁻⁶)
+ 
+  ro = 50 kΩ
+
+
+  (ro1 || ro2) = 25 kΩ
+ 
+
+  Av = - gm (ro1 || ro2) / (1 + gm RS) Av = - (1.6 × 10⁻³ × 25 × 10³) / (1 + 1.6 × 10⁻³ × 1 × 10³) Av = -40 / 2.6
+ 
+  Av = -15.38 V/V
+
+
+  Av(dB) = 20 log(15.38)
+ 
+  Av(dB) = 23.74 dB
+
+
 2. Low-Frequency Phase Shift:
     - The dotted red line represents the phase shift (read from the right Y-axis). In the flat midband region, the phase is exactly 180°.
     - This 180° shift perfectly confirms that your circuit is operating as an inverting amplifier, which is the defining characteristic of a Common-Source topology. When the input signal goes positive, the output signal goes negative.
