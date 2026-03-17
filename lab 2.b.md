@@ -217,6 +217,19 @@ to set opperating point new mosfet Dimensions are
    - This is the frequency at which the amplifier stops amplifying and the gain drops to 0 dB (a linear gain of 1 V/V).
    - frequency at 45dB is **490MHz**
 
+### Theoritical Gain:
+
+gm1 = 2ID / VOV
+    =1.6 mS
+    
+ro = 1 / (λ*ID)
+   =50kohms
+   
+Av = -gm1 (ro1 || ro2) / (1 + gm1 · ro3)
+   =0.037V/V
+Av (dB)=20*log(0.037)
+       =28.63dB
+
 ## Conclusion:
 In this experiment, a **CMOS Common-Source amplifier with a PMOS active load and an NMOS current sink** was designed and analyzed using **LTspice with the TSMC 0.18 µm technology library**.
 
