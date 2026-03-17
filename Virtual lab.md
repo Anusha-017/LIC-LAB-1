@@ -108,9 +108,12 @@ Circuit Diagram:
 S.R. = 2πfmaxVm/106   V/μs
 Click on 'Result' button and enter the calculated value.
 
-  <img width="998" height="580" alt="image" src="https://github.com/user-attachments/assets/026cda6c-7ded-4c9e-b642-2fe01e0998ac" />
+<img width="864" height="504" alt="image" src="https://github.com/user-attachments/assets/3528ce24-d65c-4538-bc45-d1668ebaa7e5" />
 
-<img width="417" height="522" alt="Screenshot 2026-03-17 004113" src="https://github.com/user-attachments/assets/8866eb53-d65e-4f31-9623-86f6afc12106" />
+
+<img width="940" height="551" alt="image" src="https://github.com/user-attachments/assets/a3d5510a-f2c4-4873-b5f8-a5e9dc5f460d" />
+
+
 
   
   
