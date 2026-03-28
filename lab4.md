@@ -267,17 +267,9 @@ $$=**5.196V/V**$$
 * $$GBW =  6.49 \times 5.594\text{ GHz} = 35.96 \text{ GHz}$$
 
 ## Inference
-Circuit 1 demonstrates (NMOS Differential Amplifier with Resistive Load .The fundamental operation of the differential pair was successfully verified. The circuit effectively amplifies the difference between the two input signals ($v_{id}$). Conversely, when the exact same signal is applied to both inputs (a pure common-mode signal), the ideal tail current source forces the differential output to effectively zero, demonstrating the amplifier's ability to reject common-mode noise.
+Circuit 1 demonstrates (NMOS Differential Amplifier with Resistive Load .The fundamental operation of the differential pair was successfully verified. The circuit effectively amplifies the difference between the two input signals ($v_{id}$). Conversely, when the exact same signal is applied to both inputs (a pure common-mode signal), the ideal tail current source forces the differential output to effectively zero, demonstrating the amplifier's ability to reject common-mode noise.  
   
-  
-
-
-
-
-
-
-
-  ## **Circuit 2: Differential Amplifier with diode-connected PMOS active load and an NMOS tail current source:**
+  ## Circuit 2: Differential Amplifier with diode-connected PMOS active load and an NMOS tail current source:
   
   <img width="816" height="677" alt="image" src="https://github.com/user-attachments/assets/9e09ebf6-f24f-41a2-a304-147a851078e7" />
 
