@@ -89,9 +89,73 @@ $$I_{D1} = \frac{1}{2} \mu_n C_{ox} \left( \frac{W}{L} \right) (V_{GS} - V_{TH})
 
 On substituting  $I_{D1} = I_{SS}/2=0.4165mA$, $V_{GS} = 0.7V$, and $L = 360nm$ ,We get $W=11.23µm$.
 
-###**DC Analysis**
+### **DC Analysis**
 
 <img width="1731" height="772" alt="image" src="https://github.com/user-attachments/assets/6e92e5d7-a5ed-425b-bb44-6f9ff7dde32e" />
+
+ W1=W2 = 19.9 um
+ 
+Total current I(V4) that is Iss = 0.833mA
+
+Id1 = Id2 = 0.4165 mA
+
+Q-point for M1 and M2 (NMOS) matches theoretical values:
+
+VP = -0.7V, Id = Iss/2 = 0.4165mA
+
+### Input Common Mode Range (ICMR)
+
+#### Maximum Input Common-Mode ($V_{inCM(max)}$):
+
+This is the highest input voltage before the input transistors ($M_1$ and $M_2$) get pushed out of the saturation region and into the triode region. This occurs when the gate voltage exceeds the drain voltage by more than $V_{TH}$.
+
+$$V_{inCM(max)} = V_{D} + V_{TH}$$
+
+Since your $V_{D}$ is $0V$:
+
+$$V_{inCM(max)} = V_{TH}$$
+
+$$V_{inCM(max)} = 0.361V$$
+
+
+### Output Common Mode Range:
+
+#### Maximum Output Common-Mode ($V_{oCM(max)}$):
+
+This occurs if the transistors are completely off (zero current flowing through $R_D$). There is no voltage drop across the resistors.
+
+$$V_{oCM(max)} = V_{DD} = 0.9V$$
+
+#### Minimum Output Common-Mode ($V_{oCM(min)}$):
+
+This is the lowest the output can swing before forcing $M_1$ and $M_2$ into the triode region (assuming $V_{inCM}$ is fixed at $0V$).
+
+$$V_{oCM(min)} = V_{DD} - (Iss/2)*R_{D} = $$
+
+$$0.9V-1.799V$$
+
+$$-0.899V$$
+
+### Linear Differential Input Range ($v_{id}$)
+
+A differential amplifier only behaves linearly for small input signals. If the differential input ($v_{id}$) gets too large, all the current steers to one transistor, causing the output to clip.
+
+First, calculate your Overdrive Voltage ($V_{OV}$):
+
+$$
+V_{OV} = V_{GS} - V_{TH} = 0.7V - 0.36 =**0.48mV**
+$$
+
+The absolute maximum limit before the circuit behaves entirely linearly  is:
+
+$$
+|v_{id}| \leq \sqrt{2} V_{OV}
+$$
+
+$$- \sqrt{2} V_{OV} \leq v_{id} \leq \sqrt{2} V_{OV}$$
+
+$$ -0.48 \leq v_{id} \leq 0.48$$
+
 
 
 
