@@ -241,6 +241,36 @@ $$=**5.196V/V**$$
 
 <img width="1918" height="923" alt="AC lab4 ckt 1" src="https://github.com/user-attachments/assets/6fe4e2eb-ddd4-4098-aa77-bd16345812a8" />
 
+- ### Midband Gain= 16.25dB=6.48V/V
+
+- ### -3dB Gain=13.25dB
+
+   * Lower cutoff frequency: fL = 0 Hz
+
+   * Upper cutoff frequency: fH = 5.594 GHz
+
+   * Bandwidth:
+    $$BW = fH − fL$$
+
+    $$BW = 5.594 − 0$$
+  
+    BW = **5.594 GHz** 
+- ### UGB:
+  The magnitude curve (solid green line) never actually crosses the 0 dB line in this graph. It flattens out around 6.5 dB at 100 GHz.Because the gain never drops to 1 (0 dB) within this frequency range, there is no literal Unity Gain Frequency
+
+- ### Gain-Bandwidth Product (GBW):
+
+  Multiply the linear mid-band gain by the $-3dB$ frequency.
+
+* $$GBW = A_v \times f_{-3dB}$$
+
+* $$GBW =  6.49 \times 5.594\text{ GHz} = 35.96 \text{ GHz}$$
+
+## Inference
+Circuit 1 demonstrates (NMOS Differential Amplifier with Resistive Load .The fundamental operation of the differential pair was successfully verified. The circuit effectively amplifies the difference between the two input signals ($v_{id}$). Conversely, when the exact same signal is applied to both inputs (a pure common-mode signal), the ideal tail current source forces the differential output to effectively zero, demonstrating the amplifier's ability to reject common-mode noise.
+  
+  
+
 
 
 
