@@ -170,11 +170,11 @@ $$ -0.48 \leq v_{id} \leq 0.48$$
 
 * **Linear Amplification:** The output waveforms, $V(out1)$ in green and $V(out2)$ in red, are clean, smooth sinusoids. There is no clipping or flattening at the peaks or troughs. This confirms that your $100mV$ input signal satisfies the small-signal condition $v_{id} < \sqrt{2}V_{OV}$, keeping both transistors ($M_1$ and $M_2$) entirely in the saturation region throughout the entire cycle.
 
-* **Voltage Gain:** The blue trace (input) has a peak amplitude of exactly $200mV$. The resulting output traces have a peak to peak is  $1.03V$. This means your circuit voltage gain of **$5.15V/V$** ($1.03V / 200mV$).
+* **Voltage Gain:** The blue trace (input) has a peak amplitude of exactly $200mV$. The resulting output traces have a peak to peak is  $1.03V$. This means the circuit voltage gain of **$5.15V/V$** ($1.03V / 200mV$).
 
 * **Differential Phase Shift:** $V(out1)$ and $V(out2)$ are exactly $180^{\circ}$ out of phase with each other. As one transistor conducts more current and pulls its drain voltage down, the other conducts less, allowing its drain voltage to rise. This is the defining characteristic of a balanced differential pair.
 
-* **Maintained Common-Mode:** Both output waves are perfectly centered exactly on the $0V$ axis. This verifies that your DC operating point of $V_{oCM} = 0V$ holds steady even when a dynamic AC signal is applied.
+* **Maintained Common-Mode:** Both output waves are perfectly centered exactly on the $0V$ axis. This verifies that DC operating point of $V_{oCM} = 0V$ holds steady even when a dynamic AC signal is applied.
 
 #### Case 2: Non-Linear Region vin=600mV
 
