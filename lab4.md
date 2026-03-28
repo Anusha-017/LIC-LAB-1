@@ -117,6 +117,13 @@ $$V_{inCM(max)} = V_{TH}$$
 
 $$V_{inCM(max)} = 0.361V$$
 
+#### Minimum Input Common-Mode ($V_{inCM(min)}$):
+
+This is the lowest input voltage before the tail current source runs out of "headroom" to operate. Because you are using an ideal current source in this specific schematic ($I_1$), it can theoretically operate all the way down to $V_{SS}$.
+
+$$V_{inCM(min)} = V_{SS} + V_{GS}$$
+
+$$V_{inCM(min)} = -0.9V + 0.7V = -0.2V$$
 
 ### Output Common Mode Range:
 
@@ -162,9 +169,12 @@ $$ -0.48 \leq v_{id} \leq 0.48$$
 
 <img width="765" height="403" alt="image" src="https://github.com/user-attachments/assets/03ca6e0b-4345-46c7-95c1-f045859998c6" />
 
+
 <img width="1917" height="468" alt="image" src="https://github.com/user-attachments/assets/dad295e8-546a-487e-8ca7-5abb022e2156" />
 
+
 <img width="1918" height="925" alt="final tran " src="https://github.com/user-attachments/assets/089fd711-85a4-49e6-acf8-354edc11d304" />
+
 
 ### Key Observations:
 
@@ -228,6 +238,9 @@ $$=**5.196V/V**$$
 - Gain (dB)= 20*log(5.19) = **14.31dB**
 
 ## AC Analysis:
+
+<img width="1918" height="923" alt="AC lab4 ckt 1" src="https://github.com/user-attachments/assets/6fe4e2eb-ddd4-4098-aa77-bd16345812a8" />
+
 
 
 
