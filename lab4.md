@@ -170,7 +170,19 @@ $$ -0.48 \leq v_{id} \leq 0.48$$
 
 * **Linear Amplification:** The output waveforms, $V(out1)$ in green and $V(out2)$ in red, are clean, smooth sinusoids. There is no clipping or flattening at the peaks or troughs. This confirms that your $100mV$ input signal satisfies the small-signal condition $v_{id} < \sqrt{2}V_{OV}$, keeping both transistors ($M_1$ and $M_2$) entirely in the saturation region throughout the entire cycle.
 
-* **Voltage Gain:** The blue trace (input) has a peak amplitude of exactly $200mV$. The resulting output traces have a peak to peak is  $1.03V$. This means the circuit voltage gain of **$5.15V/V$** ($1.03V / 200mV$).
+* **Voltage Gain:** The blue trace (input) has a peak amplitude of exactly $200mV$. The resulting output traces have a peak to peak is  $1.03V$. This means the
+
+circuit voltage gain of  
+
+$$Vout(peak-peak)/Vin(peak-peak)$$
+
+$$(1.03V / 200mV)$$
+
+$$**5.15v/v**$$
+  
+$$ Gain in dB =20*log(5.15)$$
+
+$$=14.06dB$$
 
 * **Differential Phase Shift:** $V(out1)$ and $V(out2)$ are exactly $180^{\circ}$ out of phase with each other. As one transistor conducts more current and pulls its drain voltage down, the other conducts less, allowing its drain voltage to rise. This is the defining characteristic of a balanced differential pair.
 
@@ -181,6 +193,44 @@ $$ -0.48 \leq v_{id} \leq 0.48$$
 **Output waveform:**
 
 <img width="1912" height="422" alt="non linear tran" src="https://github.com/user-attachments/assets/b0d09eca-5dd2-49d9-8490-5339d5c60f02" />
+
+### Key Observations: Non-Linear Behavior (Large Signal)
+
+* **Severe Clipping (Limiting):** The output waveforms ($V(out1)$ in green and $V(out2)$ in blue) are no longer smooth sine waves. They have flattened tops and bottoms, closely resembling square waves. This indicates the amplifier is saturating and operating completely outside its linear amplification range.
+
+* **Maximum Output Swing (High State):** When a transistor turns OFF, zero current flows through its $2.16k\Omega$ load resistor ($R_D$). Consequently, there is no voltage drop, and the output node is pulled all the way up to the positive supply rail, $V_{DD}$ (**$+0.9V$**).The green and blue traces flattening precisely at $+0.9V$.
+
+* **Minimum Output Swing (Low State):** When a transistor is forced to carry the full tail current, the maximum possible voltage drop occurs across $R_D$ ($0.833mA \times 2.16k\Omega \approx 1.8V$). This pulls the output node down from $0.9V$ to $0.9V - 1.8V = -0.9V$.The negative supply rail, $V_{SS}$ (**$-0.9V$**), which is where the bottom of the waveforms flatten out.
+
+* **Loss of Linear Gain:** In this state, the concept of small-signal voltage gain ($A_v$) is invalid. The circuit is highly distorted and is functioning more like a comparator or a voltage limiter rather than an amplifier.
+
+### The graph shows currents across resisters:
+
+<img width="1912" height="423" alt="image" src="https://github.com/user-attachments/assets/29cfb58e-1a61-418d-bc68-bd6e94893ecb" />
+
+The input signal ($V(n002)$ in red) is very large ($|v_{id}| > \sqrt{2}V_{OV}$). Instead of sharing the tail current ($I_{SS}$), the differential pair acts like a switch. During the positive and negative peaks, one transistor completely turns OFF, forcing the other transistor to conduct the entire $0.833mA$ tail current.
+
+## Theoretical Gain:
+
+Differential Gain $Ad=gmRout$
+
+### Calculation for gm value:
+$$g_m = \frac{2I_D}{V_{OV}} = \frac{2I_D}{V_{GS} - V_{TH}}$$
+$$g_m =\frac{2 \times 0.433 \times 10^{-3}}{0.7 - 0.34}$$
+$$=2.405mS$$
+
+Differential Gain $Ad=gmRout$
+
+$$=2.405mS*2.16Kohms$$
+
+$$=**5.196V/V**$$
+
+- Gain (dB)= 20*log(5.19) = **14.31dB**
+
+## AC Analysis:
+
+
+
 
 
 
