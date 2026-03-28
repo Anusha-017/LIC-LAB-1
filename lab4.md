@@ -247,6 +247,49 @@ $$=**5.196V/V**$$
 
 
 
+  ## **Circuit 2: Differential Amplifier with diode-connected PMOS active load and an NMOS tail current source:**
+  
+  <img width="816" height="677" alt="image" src="https://github.com/user-attachments/assets/9e09ebf6-f24f-41a2-a304-147a851078e7" />
+
+   ### Design Calculations:
+
+#### 1. Tail Current ($I_{SS}$) Calculation
+
+The power and supply voltages define the maximum allowed current for the entire circuit.
+
+$$V_{Total} = V_{DD} - V_{SS} = 0.9V - (-0.9V) = 1.8V$$
+
+$$P = V_{Total} \times I_{SS}$$
+
+$$1.5mW = 1.8V \times I_{SS}$$
+
+$$I_{SS} = 0.833mA$$
+
+At DC equilibrium, this current splits equally between the two branches:
+
+$$I_{D1} = I_{D2} = I_{D4} = I_{D5} = 0.4165mA$$
+
+#### 2. Width Calculation: ($M_1$ and $M_2$)
+
+The operating conditions for the input pair: 
+* $V_{inCM} = 0V$
+* $V_p = -0.7V$
+* $V_{GS1,2} = V_{inCM} - V_p = 0.7V$
+
+
+$$I_{D1} = \frac{1}{2} \mu_n C_{ox} \left( \frac{W}{L} \right) (V_{GS} - V_{TH})^2$$
+
+On substituting  $I_{D1} = I_{SS}/2=0.4165mA$, $V_{GS} = 0.7V$, and $L = 360nm$ ,We get $W=11.23µm$.
+
+  
+  
+
+
+
+
+
+
+
 
 
 
