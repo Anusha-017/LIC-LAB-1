@@ -156,6 +156,35 @@ $$- \sqrt{2} V_{OV} \leq v_{id} \leq \sqrt{2} V_{OV}$$
 
 $$ -0.48 \leq v_{id} \leq 0.48$$
 
+## Transient Analysis:
+
+### Case 1: Linear Region vin=100mV
+
+<img width="765" height="403" alt="image" src="https://github.com/user-attachments/assets/03ca6e0b-4345-46c7-95c1-f045859998c6" />
+
+<img width="1917" height="468" alt="image" src="https://github.com/user-attachments/assets/dad295e8-546a-487e-8ca7-5abb022e2156" />
+
+<img width="1918" height="925" alt="final tran " src="https://github.com/user-attachments/assets/089fd711-85a4-49e6-acf8-354edc11d304" />
+
+### Key Observations:
+
+* **Linear Amplification:** The output waveforms, $V(out1)$ in green and $V(out2)$ in red, are clean, smooth sinusoids. There is no clipping or flattening at the peaks or troughs. This confirms that your $100mV$ input signal satisfies the small-signal condition $v_{id} < \sqrt{2}V_{OV}$, keeping both transistors ($M_1$ and $M_2$) entirely in the saturation region throughout the entire cycle.
+
+* **Voltage Gain:** The blue trace (input) has a peak amplitude of exactly $200mV$. The resulting output traces have a peak to peak is  $1.03V$. This means your circuit voltage gain of **$5.15V/V$** ($1.03V / 200mV$).
+
+* **Differential Phase Shift:** $V(out1)$ and $V(out2)$ are exactly $180^{\circ}$ out of phase with each other. As one transistor conducts more current and pulls its drain voltage down, the other conducts less, allowing its drain voltage to rise. This is the defining characteristic of a balanced differential pair.
+
+* **Maintained Common-Mode:** Both output waves are perfectly centered exactly on the $0V$ axis. This verifies that your DC operating point of $V_{oCM} = 0V$ holds steady even when a dynamic AC signal is applied.
+
+#### Case 2: Non-Linear Region vin=600mV
+
+**Output waveform:**
+
+<img width="1912" height="422" alt="non linear tran" src="https://github.com/user-attachments/assets/b0d09eca-5dd2-49d9-8490-5339d5c60f02" />
+
+
+
+
 
 
 
