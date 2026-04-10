@@ -239,7 +239,11 @@ $$=**5.196V/V**$$
 
 ## AC Analysis:
 
-<img width="1393" height="706" alt="image" src="https://github.com/user-attachments/assets/07e4cac1-07a5-4ba2-9ff1-861b5b9081a6" />
+
+
+<img width="1150" height="638" alt="image" src="https://github.com/user-attachments/assets/f7a0caeb-d6dc-4834-9d37-e8c5b638dded" />
+
+
 
 
 <img width="1918" height="882" alt="image" src="https://github.com/user-attachments/assets/c480cfc7-2b3d-4e80-bdad-40c487e13c40" />
@@ -278,7 +282,7 @@ From AC analysis plot At frequency at 549.82901µdB ≈ 0dB = **51.19 MHz**
 
 * $$GBW = A_v \times f_{-3dB}$$
 
-* $$GBW =  8.03 \times 4.597\text{ GHz} = 36.91 \text{ GHz}$$
+* $$GBW =  8.03 \times 4.597\text{ GHz} = 36.91 \text{ MHz}$$
 
 ## Inference
 Circuit 1 demonstrates (NMOS Differential Amplifier with Resistive Load .The fundamental operation of the differential pair was successfully verified. The circuit effectively amplifies the difference between the two input signals ($v_{id}$). Conversely, when the exact same signal is applied to both inputs (a pure common-mode signal), the ideal tail current source forces the differential output to effectively zero, demonstrating the amplifier's ability to reject common-mode noise.  
