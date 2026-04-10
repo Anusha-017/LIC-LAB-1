@@ -239,24 +239,38 @@ $$=**5.196V/V**$$
 
 ## AC Analysis:
 
-<img width="1918" height="923" alt="AC lab4 ckt 1" src="https://github.com/user-attachments/assets/6fe4e2eb-ddd4-4098-aa77-bd16345812a8" />
+<img width="1393" height="706" alt="image" src="https://github.com/user-attachments/assets/07e4cac1-07a5-4ba2-9ff1-861b5b9081a6" />
 
-- ### Midband Gain= 16.25dB=6.48V/V
+
+<img width="1918" height="882" alt="image" src="https://github.com/user-attachments/assets/c480cfc7-2b3d-4e80-bdad-40c487e13c40" />
+
+
+
+- ### Midband Gain= 16.08dB= 6.368 V/V
+  
 
 - ### -3dB Gain=13.25dB
 
+<img width="1917" height="576" alt="image" src="https://github.com/user-attachments/assets/8653d767-d4a8-495a-90db-4a644d74d800" />
+
+
    * Lower cutoff frequency: fL = 0 Hz
 
-   * Upper cutoff frequency: fH = 5.594 GHz
+   * Upper cutoff frequency: fH = 8.03 MHz
 
    * Bandwidth:
     $$BW = fH − fL$$
 
-    $$BW = 5.594 − 0$$
+    $$BW = 8.03 MHz − 0$$
   
-    BW = **5.594 GHz** 
+    BW = **8.03 MHz** 
 - ### UGB:
-  The magnitude curve (solid green line) never actually crosses the 0 dB line in this graph. It flattens out around 6.5 dB at 100 GHz.Because the gain never drops to 1 (0 dB) within this frequency range, there is no literal Unity Gain Frequency
+ Unity Gain Bandwidth (UGB) is the frequency at which an operational amplifier's open-loop gain drops to 1 (0dB)
+ 
+<img width="1918" height="857" alt="image" src="https://github.com/user-attachments/assets/f07f721c-a00f-4235-8140-1549cc3a475f" />
+
+From AC analysis plot At frequency at 549.82901µdB ≈ 0dB = **51.19 MHz**
+
 
 - ### Gain-Bandwidth Product (GBW):
 
@@ -264,7 +278,7 @@ $$=**5.196V/V**$$
 
 * $$GBW = A_v \times f_{-3dB}$$
 
-* $$GBW =  6.49 \times 5.594\text{ GHz} = 35.96 \text{ GHz}$$
+* $$GBW =  8.03 \times 4.597\text{ GHz} = 36.91 \text{ GHz}$$
 
 ## Inference
 Circuit 1 demonstrates (NMOS Differential Amplifier with Resistive Load .The fundamental operation of the differential pair was successfully verified. The circuit effectively amplifies the difference between the two input signals ($v_{id}$). Conversely, when the exact same signal is applied to both inputs (a pure common-mode signal), the ideal tail current source forces the differential output to effectively zero, demonstrating the amplifier's ability to reject common-mode noise.  
