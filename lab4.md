@@ -147,7 +147,7 @@ $$-0.899V$$
 
 A differential amplifier only behaves linearly for small input signals. If the differential input ($v_{id}$) gets too large, all the current steers to one transistor, causing the output to clip.
 
-First, calculate your Overdrive Voltage ($V_{OV}$):
+Overdrive Voltage ($V_{OV}$):
 
 $$
 V_{OV} = V_{GS} - V_{TH} = 0.7V - 0.36 =**0.48mV**
@@ -287,13 +287,13 @@ From AC analysis plot At frequency at 549.82901µdB ≈ 0dB = **51.19 MHz**
 ## Inference
 Circuit 1 demonstrates (NMOS Differential Amplifier with Resistive Load .The fundamental operation of the differential pair was successfully verified. The circuit effectively amplifies the difference between the two input signals ($v_{id}$). Conversely, when the exact same signal is applied to both inputs (a pure common-mode signal), the ideal tail current source forces the differential output to effectively zero, demonstrating the amplifier's ability to reject common-mode noise.  
   
-  ## Circuit 2: Differential Amplifier with diode-connected PMOS active load and an NMOS tail current source:
+  # Circuit 2: Differential Amplifier with diode-connected PMOS active load and an NMOS tail current source:
   
  ### Circuit Diagram:
  
 <img width="928" height="831" alt="image" src="https://github.com/user-attachments/assets/4134cbc1-0e8e-4795-9e1b-0d1f471b4398" />
 
- ### Design Calculations:
+ ## Design Calculations:
 
 #### 1. Tail Current ($I_{SS}$) Calculation
 
@@ -313,6 +313,7 @@ $$I_{D1} = I_{D2} = I_{D4} = I_{D5} = 0.4165mA$$
 
 #### 2. Width Calculation: ($M_1$ and $M_2$)
 
+
 The operating conditions for the input pair: 
 * $V_{inCM} = 0V$
 * $V_p = -0.7V$
@@ -323,31 +324,168 @@ $$I_{D1} = \frac{1}{2} \mu_n C_{ox} \left( \frac{W}{L} \right) (V_{GS} - V_{TH})
 
 On substituting  $I_{D1} = I_{SS}/2=0.4165mA$, $V_{GS} = 0.7V$, and $L = 360nm$ ,We get $W=11.23µm$.
 
+#### 3. Width Calculation: ($M_4$ and $M_5$)
+The operating conditions for pmos: 
+* $V_{s} = VDD$
+* $V_G = V_D = 0V$
+* $V_{SG4,5} = V_{DD} - V_G = 0.9V$
+
+$$I_{D1} = \frac{1}{2} \mu_n C_{ox} \left( \frac{W}{L} \right) (V_{GS} - V_{TH})^2$$
+
+On substituting  $I_{D1} = I_{SS}/2=0.4165mA$, $V_{SG} = 0.9V$, and $L = 360nm$ ,We get $W=11.82µm$.
+
+
+#### 3. Width Calculation: ($M_3$)
+The operating conditions for M3: 
+* $V_{D} = V_P = -0.7V$
+* $V_S = -0.9V$
+* $V_DS=-0.7-(0.9)=0.2V$
+* $V_OV=V_GS-V_TH$
+  $V_ov3 = V_B -(-0.9)-V_TH$
   
-  
-### **DC Analysis**
+* For saturation $V_DS >V_OV$
+  Assuming Vov=0.17V
+  therefore $V_B=0.17-0.54$
+  $=-0.37V$
+    
+## **DC Analysis**
 
 <img width="745" height="863" alt="image" src="https://github.com/user-attachments/assets/8eec96ea-073b-4448-9a42-1115602f9a6f" />
 
+#### Operating Regions:
 
-### Transient Analysis:
+To ensure the differential pair functions as an amplifier, we verify the saturation condition:
+$V_{DS} > V_{GS} - V_{TH}$ (or $V_{DS} > V_{ov}$).
 
-vin=100mV
-<img width="1913" height="556" alt="image" src="https://github.com/user-attachments/assets/04cce02f-cc20-4620-a338-274e82af51b6" />
+* **Input Pair ($M_1, M_2$):** * $V_{DS} = V_{out} - V_P = 0\text{V} - (-0.7\text{V}) = 0.7\text{V}$.
+    * With $V_{GS} = 0.7\text{V}$, these devices stay in saturation.
+* **Active Load ($M_4, M_5$):** * These are diode-connected (as seen in the schematic where Gates are tied to Drains). Diode-connected FETs are **always in saturation** (or cutoff) because $V_{DS} = V_{GS}$, satisfying $V_{DS} > V_{GS} - V_{TH}$.
+* **Tail Current Source ($M_3$):** * $V_{DS} = V_P - V_{SS} = -0.7\text{V} - (-0.9\text{V}) = 0.2\text{V}$.
+    * The bias voltage $V_4 = -0.37\text{V}$ results in $V_{GS} = -0.37 - (-0.9) = 0.53\text{V}$.
+    * The simulation confirms $M_3$ is effectively sourcing the calculated $0.833\text{mA}$.
+ 
+### Input Common Mode Range (ICMR)
+* Minimum input voltage:
 
-<img width="1918" height="887" alt="image" src="https://github.com/user-attachments/assets/de608618-bc59-4ba8-8206-a01ecf08150d" />
+Condition $Vgs ≥ Vth$
+   $Vgs = Vicm − Vs$
+
+Vicm(min) = $Vs + Vth$
+
+     $Vicm(min) =0.7+0.36 $
+       
+       $-0.34 V$
+
+* Maximum input voltage:
+
+Vicm(max) ≈ Vd + |Vtp|
+
+$Vicm(max) = 0+0.39$
+$=0.39 V$
+
+#### **ICMR:**
+
+$-0.34 V ≤ Vicm ≤ 0.39 V$
+
+#### Output Common Mode Range (OCMR)
+* Minimum output voltage
+
+Vout(min) ≥ Vs + Vov
+
+Vout(min) = -0.7+0.34
+$=-0.36 V$
+
+* Maximum output voltage
+
+Vout(max) ≤ VDD − Vov
+
+VDD = 0.9 V
+Vov(p) = 0.25 V
+
+Vout(max) = 0.9-0.25
+$=0.65 V$
+
+#### **OCMR:**
+
+$-0.36 V ≤ Vout ≤ 0.65 V$
+
+## Transient Analysis:
+
+The linearity condition :
+
+$$
+|v_{id}| \leq \sqrt{2} V_{OV}
+$$
+
+$$- \sqrt{2} V_{OV} \leq v_{id} \leq \sqrt{2} V_{OV}$$
+
+$$ -0.189 \leq v_{id} \leq 0.189$$
 
 
-vin=600mV
+* linear operation :vin=10mV
+
+<img width="1918" height="555" alt="image" src="https://github.com/user-attachments/assets/63a0a5d0-50be-44ee-a64d-eeed4001e54e" />
+
+Observations:
+* **Linear Amplification:** The output waveforms, $V(out1)$ in green and $V(out2)$ in red, are clean, smooth sinusoids. There is no clipping or flattening at the peaks or troughs. This confirms that $10mV$ input signal satisfies the small-signal condition $v_{id} < \sqrt{2}V_{OV}$, keeping both transistors ($M_1$ and $M_2$) entirely in the saturation region throughout the entire cycle.
+
+## Simulated Gain:
+
+<img width="1917" height="546" alt="image" src="https://github.com/user-attachments/assets/338ba029-11b9-4415-aa02-d9bf800ee747" />
+
+ $$Gain=Vout(peak-peak)/vin(peak-peak)$$
+ 
+$$38.20/20 =1.91V/V$$
+
+$$Differential Gain (A_v,diff)	2 × 1.913= 3.826 V/V $$
+
+$$Gain in dB =11.65dB$$
+
+* non linear operation :vin=600mV
+
 <img width="1916" height="466" alt="image" src="https://github.com/user-attachments/assets/1ceee866-2860-4cf5-8533-ed2432476e5a" />
+
+Observations:
+
+* **Severe Clipping (Limiting):** The output waveforms ($V(out1)$ in green and $V(out2)$ in blue) are no longer smooth sine waves. They have flattened tops and bottoms, closely resembling square waves. This indicates the amplifier is saturating and operating completely outside its linear amplification range.
+
+* **Loss of Linear Gain:** In this state, the concept of small-signal voltage gain ($A_v$) is invalid. The circuit is highly distorted and is functioning more like a comparator or a voltage limiter rather than an amplifier.
+## Theoretical Small-Signal Gain
+
+### Transconductance
+
+gₘ = 2I_D / V_OV  
+gₘ = (2 × 0.4166 mA) / 0.340 V = 2.45 mS  
+
+---
+
+###  Output Resistance
+
+r_o1 (NMOS M1):  
+r_o1 = 1 / (λ_n × I_D)  
+r_o1 = 1 / (0.1 × 0.4166 mA) = 24.0 kΩ  
+
+r_o4 (PMOS M4):  
+r_o4 = 1 / (λ_p × I_D)  
+r_o4 = 1 / (0.1 × 0.4166 mA) = 24.0 kΩ  
+
+R_out:  
+R_out = r_o1 || r_o4  
+R_out = (24.0 × 24.0) / (24.0 + 24.0) kΩ = 12.0 kΩ  
+
+---
+
+### Differential Voltage Gain
+
+A_d = gₘ × R_out  
+A_d = 2.45 × 10⁻³ × 12,000 = 29.4 V/V ≈ 29.4 dB
 
 ### AC Analysis:
 
+<img width="1915" height="841" alt="image" src="https://github.com/user-attachments/assets/2babb1dd-ce6c-4a0b-a9fe-4272d0975483" />
 
-
-
-
-
+ugb:
+<img width="1918" height="661" alt="image" src="https://github.com/user-attachments/assets/29fe9457-d978-420d-a75e-4b448c9da79e" />
 
 
 
