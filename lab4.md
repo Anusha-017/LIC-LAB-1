@@ -289,9 +289,11 @@ Circuit 1 demonstrates (NMOS Differential Amplifier with Resistive Load .The fun
   
   ## Circuit 2: Differential Amplifier with diode-connected PMOS active load and an NMOS tail current source:
   
-  <img width="816" height="677" alt="image" src="https://github.com/user-attachments/assets/9e09ebf6-f24f-41a2-a304-147a851078e7" />
+ ### Circuit Diagram:
+ 
+<img width="928" height="831" alt="image" src="https://github.com/user-attachments/assets/4134cbc1-0e8e-4795-9e1b-0d1f471b4398" />
 
-   ### Design Calculations:
+ ### Design Calculations:
 
 #### 1. Tail Current ($I_{SS}$) Calculation
 
@@ -323,7 +325,23 @@ On substituting  $I_{D1} = I_{SS}/2=0.4165mA$, $V_{GS} = 0.7V$, and $L = 360nm$ 
 
   
   
+### **DC Analysis**
 
+<img width="745" height="863" alt="image" src="https://github.com/user-attachments/assets/8eec96ea-073b-4448-9a42-1115602f9a6f" />
+
+
+### Transient Analysis:
+
+vin=100mV
+<img width="1913" height="556" alt="image" src="https://github.com/user-attachments/assets/04cce02f-cc20-4620-a338-274e82af51b6" />
+
+<img width="1918" height="887" alt="image" src="https://github.com/user-attachments/assets/de608618-bc59-4ba8-8206-a01ecf08150d" />
+
+
+vin=600mV
+<img width="1916" height="466" alt="image" src="https://github.com/user-attachments/assets/1ceee866-2860-4cf5-8533-ed2432476e5a" />
+
+### AC Analysis:
 
 
 
