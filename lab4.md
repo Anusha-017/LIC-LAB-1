@@ -378,7 +378,11 @@ The operating conditions for M3:
   Assuming Vov=0.17V
   therefore $V_B=0.17-0.54$
   $=-0.37V$
-    
+
+  $$I_{D3} = \frac{1}{2} \mu_n C_{ox} \left( \frac{W}{L} \right) (V_{GS} - V_{TH})^2$$
+
+On substituting  $I_{D1} = I_{SS}=0.833mA$, $V_{ov} = 0.17V$, and $L = 360nm$ ,We get $W=90.23µm$.
+
 ## **DC Analysis**
 
 <img width="745" height="863" alt="image" src="https://github.com/user-attachments/assets/8eec96ea-073b-4448-9a42-1115602f9a6f" />
