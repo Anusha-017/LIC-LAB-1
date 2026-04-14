@@ -285,10 +285,41 @@ From AC analysis plot At frequency at 549.82901µdB ≈ 0dB = **51.19 MHz**
 * $$GBW =  8.03 \times 4.597\text{ GHz} = 36.91 \text{ MHz}$$
 
 ## Inference
-Circuit 1 demonstrates (NMOS Differential Amplifier with Resistive Load .The fundamental operation of the differential pair was successfully verified. The circuit effectively amplifies the difference between the two input signals ($v_{id}$). Conversely, when the exact same signal is applied to both inputs (a pure common-mode signal), the ideal tail current source forces the differential output to effectively zero, demonstrating the amplifier's ability to reject common-mode noise.  
+Circuit 1 demonstrates (NMOS Differential Amplifier with Resistive Load .The fundamental operation of the differential pair was successfully verified. The circuit effectively amplifies the difference between the two input signals ($v_{id}$). Conversely, when the exact same signal is applied to both inputs (a pure common-mode signal), the ideal tail current source forces the differential output to effectively zero, demonstrating the amplifier's ability to reject common-mode noise. 
+
+
   
-  # Circuit 2: Differential Amplifier with diode-connected PMOS active load and an NMOS tail current source:
+  # Circuit 2: Differential Amplifier with diode-connected PMOS active load and an NMOS tail current source
   
+## Theory
+
+ 1. Circuit Components & Structure
+
+* **Differential Pair ($M_1, M_2$):** Two identical NMOS transistors that receive the input signals $V_{in1}$ and $V_{in2}$.
+* **Active Loads ($M_4, M_5$):** Diode-connected PMOS transistors acting as resistive loads. Since they are diode-connected ($V_{GS} = V_{DS}$), they operate in the saturation region and provide a small-signal resistance of approximately $1/g_m$.
+* **Current Source ($M_3$):** An NMOS transistor biased by $V_B$ to act as a constant tail current source ($I_{SS}$), ensuring the sum of currents through both branches remains constant.
+
+
+---
+
+2. Theory of Operation
+
+The circuit operates by steering current between the two branches based on the voltage difference at the gates of $M_1$ and $M_2$.
+
+### Common-Mode Behavior
+If $V_{in1} = V_{in2}$, the current $I_{SS}$ splits equally:
+$$I_{D1} = I_{D2} = \frac{I_{SS}}{2}$$
+In this state, the output voltages $V_{out1}$ and $V_{out2}$ remain equal.
+
+### Differential-Mode Behavior
+If $V_{in1} > V_{in2}$, $M_1$ pulls more current than $M_2$. 
+* This increase in current through $M_1$ causes a larger voltage drop across the load $M_4$, pulling $V_{out1}$ lower.
+* Simultaneously, $V_{out2}$ rises.
+
+### The "Tail" Node ($V_P$)
+This node acts as a **"virtual ground"** for differential signals. This characteristic allows for the use of the **half-circuit lemma**, simplifying the analysis by focusing on just one-half of the symmetric circuit.
+
+
  ### Circuit Diagram:
  
 <img width="928" height="831" alt="image" src="https://github.com/user-attachments/assets/4134cbc1-0e8e-4795-9e1b-0d1f471b4398" />
