@@ -533,16 +533,187 @@ The CMOS differential amplifier with diode-connected loads exhibits several dist
 * **High Linearity:** The gain depends on the ratio of device dimensions rather than absolute resistor values, making it very stable across process variations.
 * **Large Bandwidth:** Because the output impedance is low ($1/g_m$), the $RC$ time constant at the output nodes is small, leading to a high-frequency response.
 
-# CIRCUIT 3:
+# CIRCUIT 3(CMOS Differential Amplifier with PMOS Current Source Loads) :
 
+##Theory:
+
+The circuit consists of three main stages:
+
+* **The Input Differential Pair ($M_1, M_2$):** These NMOS transistors convert the differential input voltage ($V_{in1} - V_{in2}$) into current variations.
+* **The Tail Current Source ($M_3$):** Biased by $V_{B1}$, it provides a steady tail current ($I_{SS}$). Its high output impedance is crucial for a high **Common-Mode Rejection Ratio (CMRR)**.
+* **Active PMOS Loads ($M_4, M_5$):** Unlike the diode-connected version, these gates are tied to a constant bias $V_{B2}$. They operate in the **Saturation Region**, acting as high-impedance current sources rather than resistors.
 
   
+ ## Circuit diagram :
+
+ <img width="1112" height="821" alt="image" src="https://github.com/user-attachments/assets/22646be2-2fc4-4bd4-a023-a8992fb4ddd3" />
 
 
+ ## Design Calculations:
+
+To design and analysis of the MOS differenrial amplifier circuit for the following soecification  :
+- **Vdd** = 0.9V
+- **L** = 180nm
+- **Power** <= 1.5mW
+- **Vincm** = 0V
+- **Vocm** = 0V
+- **Vp** = -0.7V
+- **VSS** = -0.9V
+- **vth(nmos)** = 0.36
+- **vth(pmos)** = 0.39
+### 1. Power and Tail Current Calculation
+The total power dissipation is determined by the total supply voltage and the tail current ($I_{SS}$). Assuming the core amplifier dominates the power consumption:
+
+$$
+V_{total} = V_{DD} - V_{SS} = 0.9\text{ V} - (-0.9\text{ V}) = 1.8\text{ V}
+$$
+
+$$
+P = V_{total} \times I_{SS}
+$$
+
+$$
+1.5 \times 10^{-3} = 1.8 \times I_{SS}
+$$
+
+$$
+I_{SS} = \frac{1.5\text{ mW}}{1.8\text{ V}} = 833.33\text{ μA}
+$$
+
+Because the circuit is symmetric, the current splits equally between the two branches:
+
+$$
+I_{D1} = I_{D2} = I_{D4} = I_{D5} = \frac{I_{SS}}{2} = 416.67\text{ μA}
+$$
+
+### 2. Design of the Input Differential Pair ($M_1, M_2$)
+
+We know the gate voltage is the input common-mode voltage ($V_{inCM} = 0\text{ V}$) and the source voltage is the tail node ($V_p = -0.7\text{ V}$).
+
+$$
+V_{GS1} = V_{inCM} - V_p = 0\text{ V} - (-0.7\text{ V}) = 0.7\text{ V}
+$$
+
+The overdrive voltage ($V_{OV}$) for the input NMOS transistors is:
+
+$$
+V_{OV1} = V_{GS1} - V_{th,n} = 0.7\text{ V} - 0.36\text{ V} = 0.34\text{ V}
+$$
+
+Using the saturation current equation, we can find the required aspect ratio:
+
+$$
+I_{D1} = \frac{1}{2}k'_n \left( \frac{W}{L} \right)_1 V_{OV1}^2
+$$
+
+$$
+416.67\text{ μA} = \frac{1}{2}(230\text{ μA/V}^2) \left( \frac{W}{L} \right)_1 (0.34\text{ V})^2
+$$
+
+$$
+416.67 = 115 \times \left( \frac{W}{L} \right)_1 \times 0.1156
+$$
+
+$$
+\left( \frac{W}{L} \right)_1 = \left( \frac{W}{L} \right)_2 \approx 31.34
+$$
+
+Given $L = 360\text{ nm}$:
+
+$$
+W_1 = W_2 = 31.34 \times 0.36\text{ μm} \approx 11.28\text{ μm}
+$$
+### Design of the Tail Current Source ($M_3$)
+
+Assuming V_{OV3} = 0.17\text{ V}$. $M_3$ must still sink the total $I_{SS}$ of $833.33\text{ μA}$.
+
+*(Note: The drain-to-source voltage $V_{DS3} = 0.2\text{ V}$. Since $V_{DS3} \geq V_{OV3}$, $M_3$ safely remains in saturation).*
+
+$$
+I_{SS} = \frac{1}{2}k'_n \left( \frac{W}{L} \right)_3 V_{OV3}^2
+$$
+
+$$
+833.33\text{ μA} = \frac{1}{2}(230\text{ μA/V}^2) \left( \frac{W}{L} \right)_3 (0.17\text{ V})^2
+$$
+
+$$
+833.33 = 115 \times \left( \frac{W}{L} \right)_3 \times 0.0289
+$$
+
+$$
+833.33 = 3.3235 \times \left( \frac{W}{L} \right)_3
+$$
+
+$$
+\left( \frac{W}{L} \right)_3 \approx 250.74
+$$
+
+Given $L = 360\text{ nm}$:
+
+$$
+W_3 = 250.74 \times 0.36\text{ μm} \approx 90.27\text{ μm}
+$$
+### 3. Calculating the new Bias Voltage $V_{B1}$:
+
+$$
+V_{B1} = V_{GS3} + V_{SS} = (V_{th,n} + V_{OV3}) + V_{SS}
+$$
+
+$$
+V_{B1} = (0.36\text{ V} + 0.17\text{ V}) - 0.9\text{ V} = 0.53\text{ V} - 0.9\text{ V} = -0.37\text{ V}
+$$
+
+### 4. Updated Design of PMOS Active Load ($M_4, M_5$)
+
+We are now designing the PMOS active load with an overdrive voltage of $|V_{OV4}| = 0.21\text{ V}$. These transistors must source $416.67\text{ μA}$ each.
+
+$$
+I_{D4} = \frac{1}{2}k'_p \left( \frac{W}{L} \right)_4 |V_{OV4}|^2
+$$
+
+$$
+416.67\text{ μA} = \frac{1}{2}(97.4\text{ μA/V}^2) \left( \frac{W}{L} \right)_4 (0.21\text{ V})^2
+$$
+
+$$
+416.67 = 48.7 \times \left( \frac{W}{L} \right)_4 \times 0.0441
+$$
+
+$$
+416.67 = 2.14767 \times \left( \frac{W}{L} \right)_4
+$$
+
+$$
+\left( \frac{W}{L} \right)_4 = \left( \frac{W}{L} \right)_5 \approx 194.01
+$$
+
+Given $L = 360\text{ nm}$:
+
+$$
+W_4 = W_5 = 194.01 \times 0.36\text{ μm} \approx 69.84\text{ μm}
+$$
+
+### 5. Calculating the new Bias Voltage $V_{B2}$:
+
+$$
+|V_{GS4}| = |V_{th,p}| + |V_{OV4}| = 0.39\text{ V} + 0.21\text{ V} = 0.60\text{ V}
+$$
+
+$$
+V_{B2} = V_{DD} - |V_{GS4}| = 0.9\text{ V} - 0.60\text{ V} = 0.30\text{ V}
+$$
+### Dimensions Summary:
+
+| Component | Role | W/L Ratio | Width (W) |
+| :--- | :--- | :--- | :--- |
+| **M1, M2** | NMOS Input Pair | 31.34 | 11.28 μm |
+| **M3** | NMOS Tail Source | 250.74 | 90.27 μm |
+| **M4, M5** | PMOS Active Load | 194.01 | 69.84 μm |
+
+> **Note:** All dimensions are based on a fixed length $L = 360\text{ nm}$.
 
 
-
- 
 
   
   
