@@ -713,9 +713,233 @@ $$
 
 > **Note:** All dimensions are based on a fixed length $L = 360\text{ nm}$.
 
+## **DC Analysis**
+<img width="1613" height="862" alt="image" src="https://github.com/user-attachments/assets/4bd4f5db-07a3-434c-b0a8-3f76a0cf3cbc" />
+
+### 1. DC Analysis & Operating Point Verification
+
+The primary objective of the DC analysis is to verify that the transistor biasing matches the theoretical design specifications, ensuring the desired power dissipation and that all MOSFETs are properly operating in the saturation region. 
+
+#### 1.1 Simulated vs. Theoretical Parameters
+
+The following table compares the calculated design targets against the operating point (`.op`) results obtained from the LTspice simulation.
+
+| Parameter | Description | Theoretical Target | Simulated Value |
+| :--- | :--- | :--- | :--- |
+| **V_DD** | Positive Supply Voltage | 0.9 V | 0.9 V |
+| **V_SS** | Negative Supply Voltage | -0.9 V | -0.9 V |
+| **V_inCM** | Input Common-Mode Voltage | 0 V | 0 V |
+| **V_outCM** | Output Common-Mode Voltage | 0 V | ~0 V (-1.35 µV) |
+| **V_p** | Tail Node Voltage | -0.7 V | -0.7005 V |
+| **V_B1** | NMOS Tail Current Bias | -0.37 V | -0.37 V |
+| **V_B2** | PMOS Active Load Bias | 0.30 V | 0.30 V |
+| **I_SS** | Total Tail Current (M6) | 833.33 µA | 833.10 µA |
+| **I_D1, I_D2**| Differential Pair Branch Current | 416.67 µA | 416.55 µA |
+| **I_D3, I_D4**| PMOS Active Load Current | 416.67 µA | 416.55 µA |
 
 
+#### 1.2 DC Analysis Conclusion
+
+The simulation results closely track the theoretical calculations. The total power dissipation is within the `< 1.5 mW` specification (calculated as `1.8 V × 833.10 µA ≈ 1.499 mW`). 
+
+The tail node `V_p` sits exactly at the target `-0.7 V`, confirming that the overdrive voltage sizing for the tail current source (M6) and the input differential pair (M1, M2) is accurate.
+
+## Input Common Mode Range (ICMR)
+
+### Maximum Input Common-Mode ($V_{inCM(max)}$):
+
+This is the highest input voltage before the input transistors ($M_1$ and $M_2$) get pushed out of the saturation region and into the triode region. This occurs when the gate voltage exceeds the drain voltage by more than $V_{TH}$.
+
+$$
+V_{inCM(max)} = V_D + V_{TH}
+$$
+
+Assuming the output common-mode is centered at $0\text{ V}$ ($V_D = 0\text{ V}$):
+
+$$
+V_{inCM(max)} = 0\text{ V} + 0.36\text{ V}
+$$
+
+$$
+V_{inCM(max)} = 0.36\text{ V}
+$$
+
+### Minimum Input Common-Mode ($V_{inCM(min)}$):
+
+This is the lowest input voltage before the tail current source ($M_3$) runs out of "headroom" to operate. $M_3$ requires at least its overdrive voltage ($V_{OV3}$) across its drain-to-source to stay in saturation.
+
+First, find the minimum voltage required at the tail node ($V_P$):
+
+$$
+V_{P(min)} = V_{SS} + V_{OV3}
+$$
+
+$$
+V_{P(min)} = -0.9\text{ V} + 0.17\text{ V} = -0.73\text{ V}
+$$
+
+Since $V_{inCM}$ is simply $V_P$ plus the gate-source voltage of the input pair ($V_{GS1} = 0.7\text{ V}$):
+
+$$
+V_{inCM(min)} = V_{P(min)} + V_{GS1}
+$$
+
+$$
+V_{inCM(min)} = -0.73\text{ V} + 0.7\text{ V} = -0.03\text{ V}
+$$
+## Output Voltage Swing Range
+
+> **Note:** Because this circuit uses PMOS active loads instead of resistors, the output range is bounded by the PMOS transistors entering the triode region on the high end, and the NMOS input transistors entering the triode region on the low end.
+
+### Maximum Output Swing ($V_{out(max)}$):
+This is the highest the output can swing before forcing the PMOS active load ($M_4$ or $M_5$) into the triode region.
+
+$$V_{out(max)} = V_{DD} - |V_{OV4}|$$
+
+$$V_{out(max)} = 0.9\text{ V} - 0.21\text{ V}$$
+
+$$V_{out(max)} = 0.69\text{ V}$$
+
+### Minimum Output Swing ($V_{out(min)}$):
+This is the lowest the output can swing before forcing the input NMOS ($M_1$ or $M_2$) into the triode region (assuming $V_{inCM}$ is fixed at $0\text{ V}$).
+
+$$V_{out(min)} = V_{inCM} - V_{TH}$$
+
+$$V_{out(min)} = 0\text{ V} - 0.36\text{ V}$$
+
+$$V_{out(min)} = -0.36\text{ V}$$
+
+---
+
+## Linear Differential Input Range ($v_{id}$)
+
+A differential amplifier only behaves linearly for small input signals. If the differential input ($v_{id}$) gets too large, all the current steers to one transistor, causing the output to clip.
+
+**Overdrive Voltage ($V_{OV}$) of the input pair:**
+$$V_{OV} = V_{GS} - V_{TH} = 0.7\text{ V} - 0.36\text{ V} = 0.34\text{ V}$$
+
+**The absolute maximum limit before the circuit stops behaving linearly (fully steers current) is:**
+
+$$|v_{id}| \leq \sqrt{2}V_{OV}$$
+
+$$-\sqrt{2}V_{OV} \leq v_{id} \leq \sqrt{2}V_{OV}$$
+
+$$-1.414(0.34\text{ V}) \leq v_{id} \leq 1.414(0.34\text{ V})$$
+
+$$-0.48\text{ V} \leq v_{id} \leq 0.48\text{ V}$$
+
+## Transient Analysis
+
+### Case 1: Transient Analysis in the Linear Region
+
+**Operating Condition:** $V_{id} < \sqrt{2}V_{OV}$
+
+
+ <img width="642" height="560" alt="image" src="https://github.com/user-attachments/assets/f9e97c3a-68c0-4893-92ed-084e09d14f92" />
+
+ 
+<img width="1918" height="547" alt="image" src="https://github.com/user-attachments/assets/2afcb65a-87e5-4997-a9b9-67e5a8a0a069" />
+
+
+To observe the differential amplifier's behavior as a linear amplifier, the applied differential input voltage ($v_{id}$) must remain small enough that neither input transistor ($M_1$ or $M_2$) is fully turned off. 
+
+#### Simulation Setup & Results
+For this analysis, a small-signal sinusoidal differential input is applied to the gates of $M_1$ and $M_2$ (e.g., $10\text{ mV}$ peak amplitude at $1\text{ kHz}$). Since $10\text{ mV} \ll 480\text{ mV}$, the circuit operates strictly within its linear range.
+
+* **Input Waveforms:** The input signals are pure, out-of-phase sinusoids with a common-mode voltage of $0\text{ V}$.
+* **Output Waveforms:** The transient response shows the amplified output signals ($V_{out1}$ and $V_{out2}$). Because the input amplitude is well within the linear boundary, the output waveforms remain undistorted sinusoids. 
+* **Observation:** There is no clipping or flattening at the peaks of the output waves, confirming that the tail current ($I_{SS}$) is being smoothly steered between the two branches of the amplifier without either branch fully cutting off.
+
+
+ #### Case 2**Non Linear Region ($V_{id} > \sqrt{2}V_{ov}$):**
+
+<img width="1915" height="528" alt="image" src="https://github.com/user-attachments/assets/3565c80c-a0c6-460b-85b6-19dbb86e165e" />
+### Case 2: Transient Analysis in the Non-Linear Region
+
+**Operating Condition:** $V_{id} > \sqrt{2}V_{OV}$
+
+To observe the differential amplifier's non-linear behavior, the applied differential input voltage ($v_{id}$) must exceed the boundary where both input transistors ($M_1$ and $M_2$) remain active. When the input signal is too large, the amplifier acts less like a linear multiplier and more like a switch, steering the entire tail current to one side.
+
+#### Simulation Setup & Results
+For this analysis, a large-signal sinusoidal differential input is applied. The simulation uses `SINE(0 500m 1k)`, meaning a $1\text{ kHz}$ sine wave with a peak amplitude of $500\text{ mV}$ ($0.5\text{ V}$). Since $0.5\text{ V}$ exceeds our theoretical $0.48\text{ V}$ linear limit, the circuit is pushed into non-linear operation.
+
+* **Input Waveforms:** The input signals are large, out-of-phase sinusoids with a peak amplitude of $500\text{ mV}$ and a common-mode voltage of $0\text{ V}$.
+* **Output Waveforms:** The transient response shows distorted output signals ($V_{out1}$ and $V_{out2}$). 
+* **Observation:** The peaks of the output waveforms are visibly flattened or "clipped." This clipping occurs because, at the extremes of the input cycle, the entire tail current ($I_{SS}$) is fully steered into one branch of the differential pair, completely cutting off the transistor in the opposite branch. Once 100% of the current is steered, the output voltage reaches its absolute swing limit and cannot change any further, resulting in the flat tops characteristic of an overdriven amplifier.
+
+## Simulated Gain:
+
+<img width="1918" height="883" alt="image" src="https://github.com/user-attachments/assets/ec7faa99-b107-47dd-a370-a164f9c5db05" />
+
+
+ $$Gain=Vout(peak-peak)/vin(peak-peak)$$
+ 
+$$644.98mV/20mV =32.249V/V$$
+
+$$Differential Gain (A_v,diff)	2 × 32.259 = 64.49 V/V $$
+
+$$Gain in dB =  36.19dB$$
+
+## Theoretical Small-Signal Gain
+
+### Transconductance ($g_m$)
+
+The transconductance of the input differential pair ($M_1$ and $M_2$) is determined by their bias current and overdrive voltage:
+
+$$
+g_m = 2I_D/V_OV
+$$
+
+$$
+g_m = 0.4166mA /0.340 V= 2.45 mS
+$$
+
+### Output Resistance ($R_{out}$)
+
+Assuming a channel-length modulation parameter ($\lambda_n$ and $\lambda_p$) of $0.1\text{ V}^{-1}$:
+
+* **$r_{o1}$ (NMOS $M_1$):**
+  $$r_{o1} = \frac{1}{\lambda_n I_D}$$
+  $$r_{o1} = \frac{1}{0.1\text{ V}^{-1} \times 0.4166\text{ mA}} = 24.0\text{ k}\Omega$$
+
+* **$r_{o4}$ (PMOS $M_4$ active load):**
+  $$r_{o4} = \frac{1}{\lambda_p I_D}$$
+  $$r_{o4} = \frac{1}{0.1\text{ V}^{-1} \times 0.4166\text{ mA}} = 24.0\text{ k}\Omega$$
+
+* **Total Output Resistance ($R_{out}$):**
+  $$R_{out} = r_{o1} \parallel r_{o4}$$
+  $$R_{out} = \frac{24.0\text{ k}\Omega \times 24.0\text{ k}\Omega}{24.0\text{ k}\Omega + 24.0\text{ k}\Omega} = 12.0\text{ k}\Omega$$
+
+### Differential Voltage Gain ($A_d$)
+
+The intrinsic differential voltage gain is the product of the transconductance and the total output resistance:
+
+$$A_d = g_m \times R_{out}$$
+
+$$A_d = 2.45\text{ mS} \times 12.0\text{ k}\Omega = 29.4\text{ V/V}$$
+
+**Expressed in decibels (dB):**
+
+$$A_{d(dB)} = 20 \log_{10}(29.4) \approx 29.366\text{ dB}$$
+
+## AC Analysis:
+
+<img width="1918" height="878" alt="image" src="https://github.com/user-attachments/assets/2bc1d6fa-b24b-46ba-999f-27ffd3c27acc" />
+
+- Midband Gain= 37.006=70.79 V/V
+- Bandwidth (frequency at (Gain -3dB))= 1.44 MHz
+- Unity Gain Bandwidth =98.47 MHz
+- Gain-Bandwidth Product:   $$GBW = A_v \times f_{-3dB}$$
   
+   $$GBW = 1.44  MHz\times 70.79\text{ GHz} =101.93 \text{ MHz}$$
+
+
+
+
+
+
+        
+
   
   
 
