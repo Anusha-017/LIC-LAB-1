@@ -933,6 +933,25 @@ $$A_{d(dB)} = 20 \log_{10}(29.4) \approx 29.366\text{ dB}$$
   
    $$GBW = 1.44  MHz\times 70.79\text{ GHz} =101.93 \text{ MHz}$$
 
+## Comparison of Differential Amplifier Topologies
+
+| Feature | Circuit 1 (Resistor Load) | Circuit 2 (Diode-Connected Load) | Circuit 3 (Active / Current Source Load) |
+| :--- | :--- | :--- | :--- |
+| **Load Type** | Passive Resistors ($R_D$) | Diode-connected PMOS ($M_4, M_5$) | Current-source PMOS ($M_4, M_5$) |
+| **Tail Current** | Ideal Current Source ($I_{SS}$) | NMOS Current Source ($M_3$) | NMOS Current Source ($M_3$) |
+| **Voltage Gain** | **Medium** <br> ($A_v = g_{m1}R_D$) | **Low** <br> ($A_v \approx g_{m1}/g_{m4}$) | **High** <br> ($A_v = g_{m1}(r_{o1} \parallel r_{o4})$) |
+| **Silicon Area** | **Very Large** <br> Passive on-chip resistors consume massive physical area. | **Small** <br> Uses only MOSFETs, which are extremely compact. | **Small** <br> Uses only MOSFETs, keeping the footprint compact. |
+| **Input Swing (ICMR)** | **High** <br> Upper limit is restricted only by the voltage drop across $R_D$. | **Restricted** <br> Upper limit is clamped by the $V_{GS}$ drop of the diode loads. | **High** <br> Upper limit constrained only by small overdrive voltage ($V_{OV}$). |
+| **Output Swing** | **Medium to High** <br> Linear until input NMOS enters triode region. | **Low** <br> Restricted because diode load requires large $V_{GS}$ to operate. | **High** <br> Can swing very close to supply rails ($V_{DD} - \lvert V_{OV4} \rvert$). |
+| **Power Dissipation** | Constrained by design specs (e.g., $P \leq 1.5\text{ mW}$); generally inflexible. | Scales with tail current; efficient for size but poor gain-to-power efficiency. | **Highly efficient.** Provides maximum gain for a given power budget. |
+
+## Summary of the Lab's Objective
+
+The progression from Circuit 1 to Circuit 3 demonstrates the evolution of analog IC design:
+
+1. **Circuit 1** establishes the fundamental differential behavior but is impractical for modern ICs due to the massive area taken up by resistors.
+2. **Circuit 2** solves the area problem by replacing resistors with diode-connected transistors, but severely compromises on voltage gain and output swing.
+3. **Circuit 3** is the standard modern topology. By using current sources as active loads, it maintains a small physical footprint while achieving high voltage gain and excellent output swing.
 
 
 
