@@ -282,9 +282,9 @@ From AC analysis plot At frequency at 549.82901µdB ≈ 0dB = **51.19 MHz**
 
 * $$GBW = A_v \times f_{-3dB}$$
 
-* $$GBW =  8.03 \times 4.597\text{ GHz} = 36.91 \text{ MHz}$$
+* $$GBW =  8.03  MHz\times 6.36\text{ GHz} = 51.07 \text{ MHz}$$
 
-## Inference
+## Conclusion:
 Circuit 1 demonstrates (NMOS Differential Amplifier with Resistive Load .The fundamental operation of the differential pair was successfully verified. The circuit effectively amplifies the difference between the two input signals ($v_{id}$). Conversely, when the exact same signal is applied to both inputs (a pure common-mode signal), the ideal tail current source forces the differential output to effectively zero, demonstrating the amplifier's ability to reject common-mode noise. 
 
 
@@ -453,7 +453,7 @@ $$- \sqrt{2} V_{OV} \leq v_{id} \leq \sqrt{2} V_{OV}$$
 $$ -0.189 \leq v_{id} \leq 0.189$$
 
 
-* linear operation :vin=10mV
+* Case 1: linear operation :vin=10mV
 
 <img width="1918" height="555" alt="image" src="https://github.com/user-attachments/assets/63a0a5d0-50be-44ee-a64d-eeed4001e54e" />
 
@@ -472,7 +472,7 @@ $$Differential Gain (A_v,diff)	2 × 1.913= 3.826 V/V $$
 
 $$Gain in dB =11.65dB$$
 
-* non linear operation :vin=600mV
+* Case2 non linear operation :vin=600mV
 
 <img width="1916" height="466" alt="image" src="https://github.com/user-attachments/assets/1ceee866-2860-4cf5-8533-ed2432476e5a" />
 
@@ -488,23 +488,20 @@ Observations:
 gₘ = 2I_D / V_OV  
 gₘ = (2 × 0.4166 mA) / 0.340 V = 2.45 mS  
 
----
 
 ###  Output Resistance
 
-r_o1 (NMOS M1):  
-r_o1 = 1 / (λ_n × I_D)  
-r_o1 = 1 / (0.1 × 0.4166 mA) = 24.0 kΩ  
+ro1 (NMOS M1):  
+ro1 = 1 / (λn × ID)  
+ro1 = 1 / (0.1 × 0.4166 mA) = 24.0 kΩ  
 
-r_o4 (PMOS M4):  
-r_o4 = 1 / (λ_p × I_D)  
-r_o4 = 1 / (0.1 × 0.4166 mA) = 24.0 kΩ  
+ro4 (PMOS M4):  
+ro4 = 1 / (λp × ID)  
+ro4 = 1 / (0.1 × 0.4166 mA) = 24.0 kΩ  
 
-R_out:  
-R_out = r_o1 || r_o4  
-R_out = (24.0 × 24.0) / (24.0 + 24.0) kΩ = 12.0 kΩ  
-
----
+Rout:  
+Rout = ro1 || ro4  
+Rout = (24.0 × 24.0) / (24.0 + 24.0) kΩ = 12.0 kΩ  
 
 ### Differential Voltage Gain
 
@@ -513,10 +510,30 @@ A_d = 2.45 × 10⁻³ × 12,000 = 29.4 V/V ≈ 29.4 dB
 
 ### AC Analysis:
 
-<img width="1915" height="841" alt="image" src="https://github.com/user-attachments/assets/2babb1dd-ce6c-4a0b-a9fe-4272d0975483" />
+<img width="1913" height="696" alt="image" src="https://github.com/user-attachments/assets/180929a0-8f61-4078-b774-618c0ca3930d" />
 
-ugb:
-<img width="1918" height="661" alt="image" src="https://github.com/user-attachments/assets/29fe9457-d978-420d-a75e-4b448c9da79e" />
+- Midband Gain= 11.507dB=3.761 V/V
+- Bandwidth (frequency at (Gain -3dB))= 27.04 MHz
+- Unity Gain Bandwidth =89.96 MHz
+- Gain-Bandwidth Product:   $$GBW = A_v \times f_{-3dB}$$
+  
+   $$GBW = 27.04  MHz\times 3.76\text{ GHz} =101.67 \text{ MHz}$$
+
+## Conclusion
+
+### Key Characteristics:
+
+The CMOS differential amplifier with diode-connected loads exhibits several distinct performance trade-offs:
+
+* **Low Gain:** Compared to a current-mirror load, the diode-connected load provides relatively low gain because $1/g_m$ is a low impedance.
+* **High Linearity:** The gain depends on the ratio of device dimensions rather than absolute resistor values, making it very stable across process variations.
+* **Large Bandwidth:** Because the output impedance is low ($1/g_m$), the $RC$ time constant at the output nodes is small, leading to a high-frequency response.
+
+# CIRCUIT 3:
+
+
+  
+
 
 
 
