@@ -472,9 +472,7 @@ Observations:
  
 $$38.20/20 =1.91V/V$$
 
-$$Differential Gain (A_v,diff)	2 × 1.913= 3.826 V/V $$
-
-$$Gain in dB =11.65dB$$
+$$Gain in dB =5.62 dB$$
 
 * Case2 non linear operation :vin=600mV
 
@@ -489,23 +487,23 @@ Observations:
 
 ### Transconductance
 
-gₘ = 2I_D / V_OV  
-gₘ = (2 × 0.4166 mA) / 0.340 V = 2.45 mS  
+$$gₘ = 2I_D / V_OV$$  
+$$gₘ = (2 × 0.4166 mA) / 0.340 V = 2.45 mS$$  
 
 
 ###  Output Resistance
 
 ro1 (NMOS M1):  
-ro1 = 1 / (λn × ID)  
-ro1 = 1 / (0.1 × 0.4166 mA) = 24.0 kΩ  
+$$ro1 = 1 / (λn × ID)$$  
+$$ro1 = 1 / (0.1 × 0.4166 mA) = 24.0 kΩ $$ 
 
 ro4 (PMOS M4):  
-ro4 = 1 / (λp × ID)  
-ro4 = 1 / (0.1 × 0.4166 mA) = 24.0 kΩ  
+$$ro4 = 1 / (λp × ID)$$  
+$$ro4 = 1 / (0.1 × 0.4166 mA) = 24.0 kΩ$$  
 
 Rout:  
-Rout = ro1 || ro4  
-Rout = (24.0 × 24.0) / (24.0 + 24.0) kΩ = 12.0 kΩ  
+$$Rout = ro1 || ro4 $$ 
+$$Rout = (24.0 × 24.0) / (24.0 + 24.0) kΩ = 12.0 kΩ$$  
 
 ### Differential Voltage Gain
 
