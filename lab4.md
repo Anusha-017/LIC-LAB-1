@@ -944,6 +944,7 @@ $$A_{d(dB)} = 20 \log_{10}(29.4) \approx 29.366\text{ dB}$$
 | **Output Swing** | **Medium to High** <br> Linear until input NMOS enters triode region. | **Low** <br> Restricted because diode load requires large $V_{GS}$ to operate. | **High** <br> Can swing very close to supply rails ($V_{DD} - \lvert V_{OV4} \rvert$). |
 | **Power Dissipation** | Constrained by design specs (e.g., $P \leq 1.5\text{ mW}$); generally inflexible. | Scales with tail current; efficient for size but poor gain-to-power efficiency. | **Highly efficient.** Provides maximum gain for a given power budget. |
 
+
 ## Summary of the Lab's Objective
 
 The progression from Circuit 1 to Circuit 3 demonstrates the evolution of analog IC design:
