@@ -512,14 +512,15 @@ A_d = 2.45 × 10⁻³ × 12,000 = 29.4 V/V ≈ 29.4 dB
 
 ### AC Analysis:
 
-<img width="1913" height="696" alt="image" src="https://github.com/user-attachments/assets/180929a0-8f61-4078-b774-618c0ca3930d" />
+<img width="1918" height="798" alt="image" src="https://github.com/user-attachments/assets/2bebe331-2324-41d4-893f-186a55045aee" />
 
-- Midband Gain= 11.507dB=3.761 V/V
-- Bandwidth (frequency at (Gain -3dB))= 27.04 MHz
-- Unity Gain Bandwidth =89.96 MHz
+
+- Midband Gain= 5.63dB =1.912 V/V
+- Bandwidth (frequency at (Gain -3dB))= 26.93 MHz
+- Unity Gain Bandwidth =43.92 MHz
 - Gain-Bandwidth Product:   $$GBW = A_v \times f_{-3dB}$$
   
-   $$GBW = 27.04  MHz\times 3.76\text{ GHz} =101.67 \text{ MHz}$$
+   $$GBW = 26.93  MHz\times 1.912\text{ GHz} =51.43 \text{ MHz}$$
 
 ## Conclusion
 
@@ -874,9 +875,9 @@ For this analysis, a large-signal sinusoidal differential input is applied. The 
  
 $$644.98mV/20mV =32.249V/V$$
 
-$$Differential Gain (A_v,diff)	2 × 32.259 = 64.49 V/V $$
+$$ Gain (A_v,diff) 32.249 v/v $$
 
-$$Gain in dB =  36.19dB$$
+$$Gain in dB =  30.22dB$$
 
 ## Theoretical Small-Signal Gain
 
